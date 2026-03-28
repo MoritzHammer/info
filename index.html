@@ -75,13 +75,14 @@
 
     /* ─── SCROLL PROGRESS ─── */
     #progress {
-      position: fixed;
-      top: 0; left: 0;
+      position: absolute;
+      bottom: -1px; left: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      z-index: 1000;
-      transition: width 0.1s linear;
+      z-index: 1001;
+      transition: width 0.08s linear;
       width: 0%;
+      box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(79,142,247,0.35);
     }
 
     /* ─── NAV ─── */
@@ -689,19 +690,97 @@
     .hero-desc { animation: fadeSlideIn 0.6s ease 0.4s both; }
     .hero-actions { animation: fadeSlideIn 0.6s ease 0.5s both; }
 
+    /* ─── HAMBURGER ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.25rem; }
-      .container { padding: 0 1.5rem; }
+      nav { padding: 1rem 1.25rem; }
+      .container { padding: 0 1.25rem; }
 
+      /* Hamburger visible on mobile */
+      .hamburger { display: flex; }
+
+      /* Mobile nav drawer */
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(10,13,20,0.97);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 150;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        font-size: 1.1rem;
+        letter-spacing: 0.12em;
+      }
+
+      /* Hero */
       .hero-inner { grid-template-columns: 1fr; }
       .hero-card { display: none; }
+      #hero { padding-top: 4rem; min-height: auto; padding-bottom: 4rem; }
+      .hero-name { font-size: clamp(2.5rem, 12vw, 4rem); }
+      .hero-desc { font-size: 0.9rem; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
 
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      /* Sections */
+      #about, #skills, #projects, #contact { padding: 4rem 0; }
+      .section-header { margin-bottom: 2.5rem; }
 
-      #about, #skills, #projects, #contact { padding: 5rem 0; }
+      /* About */
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .stat-box { padding: 1rem; }
+      .stat-num { font-size: 1.75rem; }
+
+      /* Skills */
+      .skills-grid { grid-template-columns: 1fr; }
+
+      /* Projects */
+      .projects-grid { grid-template-columns: 1fr; }
+
+      /* Contact */
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* Footer */
+      footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 1.5rem;
+      }
+      footer span:nth-child(2) { display: none; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-name { font-size: 2.5rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
     }
 
     /* Custom scrollbar */
@@ -713,12 +792,14 @@
 </head>
 <body>
 
-<div id="progress"></div>
-
 <!-- ─── NAV ─── -->
 <nav>
+  <div id="progress"></div>
   <a class="nav-logo" href="#hero">M<span>.</span>H</a>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#about">01 // über mich</a></li>
     <li><a href="#skills">02 // skills</a></li>
     <li><a href="#projects">03 // projekte</a></li>
@@ -992,10 +1073,10 @@
         <div class="section-num">04 // Kontakt</div>
         <h2>Lass uns <em>reden</em></h2>
         <p>
-          Ich bin offen für neue Möglichkeiten — ob Festanstellung, Projekt oder 
+          Ich bin offen für neue Möglichkeiten. Ob Festanstellung, Projekt oder 
           einfach ein fachlicher Austausch. Schreib mir gerne!
         </p>
-        <a class="btn btn-primary" href="mailto:mail@moritzhammer.org">
+        <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#503d31393c103d3f2239242a38313d3d35227e3f2237">
           ✉ Mail schreiben
         </a>
       </div>
@@ -1013,9 +1094,9 @@
             <span class="info-link-label">github.com/MoritzHammer</span>
             <span class="info-link-arrow">→</span>
           </a>
-          <a class="info-link" href="mailto:mail@moritzhammer.org">
+          <a class="info-link" href="/cdn-cgi/l/email-protection#7a171b13163a171508130e00121b17171f085415081d">
             <span class="info-link-icon">✉</span>
-            <span class="info-link-label">mail@moritzhammer.org</span>
+            <span class="info-link-label"><span class="__cf_email__" data-cfemail="f19c90989db19c9e8398858b99909c9c9483df9e8396">[email&#160;protected]</span></span>
             <span class="info-link-arrow">→</span>
           </a>
           <a class="info-link" href="https://www.linkedin.com/in/moritz-hammer-393516174" target="_blank" rel="noopener">
@@ -1036,12 +1117,31 @@
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <span>© 2025 Moritz Hammer</span>
+  <span>© 2026 Moritz Hammer</span>
   <span>Gebaut mit HTML · CSS · Vanilla JS</span>
-  <span>Stuttgart, DE 🇩🇪</span>
+  <span>Stuttgart, DE</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+  // ─── Hamburger menu ───
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
   // ─── Scroll progress bar ───
   const progress = document.getElementById('progress');
   window.addEventListener('scroll', () => {
@@ -1074,11 +1174,4 @@
     if (anyVisible) clearTimeout(fallback);
   }, 300);
 
-  // ─── Smooth active nav highlight ───
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        navLinks.f
+  // ─── Smooth active na
