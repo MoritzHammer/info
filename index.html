@@ -76,13 +76,13 @@
     /* ─── SCROLL PROGRESS ─── */
     #progress {
       position: absolute;
-      bottom: -1px; left: 0;
+      bottom: 0; left: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      z-index: 1001;
-      transition: width 0.08s linear;
       width: 0%;
-      box-shadow: 0 0 8px var(--accent), 0 0 16px rgba(79,142,247,0.35);
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 10;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(79,142,247,0.6);
     }
 
     /* ─── NAV ─── */
@@ -97,6 +97,7 @@
       background: rgba(12,12,14,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      overflow: hidden;
     }
 
     .nav-logo {
@@ -1073,10 +1074,10 @@
         <div class="section-num">04 // Kontakt</div>
         <h2>Lass uns <em>reden</em></h2>
         <p>
-          Ich bin offen für neue Möglichkeiten. Ob Festanstellung, Projekt oder 
+          Ich bin offen für neue Möglichkeiten; Ob Festanstellung, Projekt oder 
           einfach ein fachlicher Austausch. Schreib mir gerne!
         </p>
-        <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#503d31393c103d3f2239242a38313d3d35227e3f2237">
+        <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#e2878f838b8ea28f8d908b96988a838f8f8790cc8687">
           ✉ Mail schreiben
         </a>
       </div>
@@ -1094,9 +1095,9 @@
             <span class="info-link-label">github.com/MoritzHammer</span>
             <span class="info-link-arrow">→</span>
           </a>
-          <a class="info-link" href="/cdn-cgi/l/email-protection#7a171b13163a171508130e00121b17171f085415081d">
+          <a class="info-link" href="/cdn-cgi/l/email-protection#84e1e9e5ede8c4e9ebf6edf0feece5e9e9e1f6aae0e1">
             <span class="info-link-icon">✉</span>
-            <span class="info-link-label"><span class="__cf_email__" data-cfemail="f19c90989db19c9e8398858b99909c9c9483df9e8396">[email&#160;protected]</span></span>
+            <span class="info-link-label"><span class="__cf_email__" data-cfemail="7c19111d15103c11130e150806141d1111190e521819">[email&#160;protected]</span></span>
             <span class="info-link-arrow">→</span>
           </a>
           <a class="info-link" href="https://www.linkedin.com/in/moritz-hammer-393516174" target="_blank" rel="noopener">
@@ -1166,12 +1167,3 @@
     });
   }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
-  revealEls.forEach(el => observer.observe(el));
-
-  // If all visible quickly, cancel the fallback
-  setTimeout(() => {
-    const anyVisible = [...revealEls].some(el => el.classList.contains('visible'));
-    if (anyVisible) clearTimeout(fallback);
-  }, 300);
-
-  // ─── Smooth active na
