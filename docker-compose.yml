@@ -1,6 +1,11 @@
 services:
   website:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    pull_policy: build
     ports:
       - "8080:80"
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
     restart: unless-stopped
