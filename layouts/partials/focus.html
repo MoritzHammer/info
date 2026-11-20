@@ -1,0 +1,22 @@
+      <section class="love" id="schwerpunkte">
+        <div class="love-head">
+          <div class="love-title">
+            <p class="eyebrow">Fokus &amp; Praxis</p>
+            <h2>Vier Bausteine aus<br />Entwicklung &amp; Weiterbildung.</h2>
+          </div>
+          <a href="#kontakt" class="pill pill--ink">Direkt Kontakt aufnehmen</a>
+        </div>
+
+        <div class="focus-grid">
+          {{- range .Site.Data.profile.focus_cards }}
+          <article class="focus-card focus-card--{{ .color }}">
+            <div class="focus-card-top">
+              <span class="focus-tag">{{ .tag }}</span>
+              <span class="focus-org">{{ .org }}</span>
+            </div>
+            <h3 class="focus-title">{{ .title }}</h3>
+            <p class="focus-body">{{ .body }}</p>
+          </article>
+          {{- end }}
+        </div>
+      </section>

@@ -1,0 +1,157 @@
+      {{- $cv := .Site.Data.profile.cv -}}
+      <section class="cv-panel panel" id="lebenslauf">
+        <div class="cv-panel-head">
+          <div class="cv-panel-title-wrap">
+            <p class="eyebrow">Lebenslauf · Curriculum Vitae</p>
+            <h2 class="panel-title">Stationen &amp; Qualifikationen</h2>
+          </div>
+          <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--ink" id="cv-section-download-btn">A4 PDF herunterladen ↓</a>
+        </div>
+
+        <div class="cv-grid">
+          <aside class="cv-sidebar">
+            <div class="cv-profile-card">
+              <div class="cv-avatar">
+                <img src="/img/portrait.jpg" width="74" height="74" loading="lazy" alt="Moritz Hammer" />
+              </div>
+              <div class="cv-profile-meta">
+                <h3>Moritz Hammer</h3>
+                <p>Anwendungsentwickler (C# &amp; AL)</p>
+              </div>
+            </div>
+
+            <div class="cv-side-block">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>Kontakt &amp; Standort</h3>
+              <ul class="cv-data-list">
+                <li>
+                  <span class="cv-data-label">E-Mail</span>
+                  <a class="cv-data-val" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+                </li>
+                <li>
+                  <span class="cv-data-label">Region</span>
+                  <span class="cv-data-val">{{ .Site.Params.location }}</span>
+                </li>
+                <li>
+                  <span class="cv-data-label">Profile</span>
+                  <a class="cv-data-val" href="{{ .Site.Params.github }}" target="_blank" rel="noopener">github.com/MoritzHammer</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="cv-side-block">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>Arbeitsweise</h3>
+              <ul class="cv-bullet-list">
+                {{- range $cv.work_style }}
+                <li>{{ . }}</li>
+                {{- end }}
+              </ul>
+            </div>
+
+            <div class="cv-side-block">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--yellow"></span>Technik &amp; Stack</h3>
+              <ul class="cv-bullet-list cv-bullet-list--cyan">
+                {{- range $cv.tech_points }}
+                <li>{{ . | safeHTML }}</li>
+                {{- end }}
+              </ul>
+            </div>
+
+            <div class="cv-side-block">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>Sprachen &amp; Fokus</h3>
+              <div class="cv-skill-bars">
+                {{- range $cv.skills }}
+                {{- $filled := .filled -}}
+                {{- $color := .color -}}
+                <div class="cv-skill-item">
+                  <div class="cv-skill-top">
+                    <span class="cv-skill-name">{{ .name }}</span>
+                    <span class="cv-skill-lvl">{{ .level }}</span>
+                  </div>
+                  <div class="cv-segments">
+                    {{- range seq 1 6 }}
+                    <span class="cv-seg{{ if le . $filled }} {{ $color }}{{ end }}"></span>
+                    {{- end }}
+                  </div>
+                </div>
+                {{- end }}
+              </div>
+            </div>
+
+            <div class="cv-side-block">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>Abschlüsse &amp; AEVO</h3>
+              <ul class="cv-bullet-list cv-bullet-list--yellow">
+                {{- range $cv.qualifications }}
+                <li>{{ . | safeHTML }}</li>
+                {{- end }}
+              </ul>
+            </div>
+          </aside>
+
+          <div class="cv-main-col">
+            <div class="cv-timeline-group">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>Berufserfahrung &amp; Weiterbildung</h3>
+              <div class="cv-timeline-list">
+                {{- range $cv.experience }}
+                <article class="cv-entry{{ if .color }} cv-entry--{{ .color }}{{ end }}">
+                  <div class="cv-entry-head">
+                    <h4 class="cv-entry-role">{{ .role }}</h4>
+                    <span class="cv-entry-date">{{ .date }}</span>
+                  </div>
+                  <div class="cv-entry-sub">
+                    <span class="cv-entry-org">{{ .org }}</span>
+                    {{- if .badge }}
+                    <span class="cv-badge cv-badge--{{ .color }}">{{ .badge }}</span>
+                    {{- end }}
+                  </div>
+                  {{- if .points }}
+                  <ul class="cv-entry-points">
+                    {{- range .points }}
+                    <li>{{ . | safeHTML }}</li>
+                    {{- end }}
+                  </ul>
+                  {{- end }}
+                </article>
+                {{- end }}
+              </div>
+            </div>
+
+            <div class="cv-timeline-group">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>Ausbildung</h3>
+              <div class="cv-timeline-list">
+                {{- range $cv.education }}
+                <article class="cv-entry{{ if .color }} cv-entry--{{ .color }}{{ end }}">
+                  <div class="cv-entry-head">
+                    <h4 class="cv-entry-role">{{ .role }}</h4>
+                    <span class="cv-entry-date">{{ .date }}</span>
+                  </div>
+                  <div class="cv-entry-sub">
+                    <span class="cv-entry-org">{{ .org }}</span>
+                    {{- if .badge }}
+                    <span class="cv-badge cv-badge--{{ .color }}">{{ .badge }}</span>
+                    {{- end }}
+                  </div>
+                  {{- if .points }}
+                  <ul class="cv-entry-points">
+                    {{- range .points }}
+                    <li>{{ . | safeHTML }}</li>
+                    {{- end }}
+                  </ul>
+                  {{- end }}
+                </article>
+                {{- end }}
+              </div>
+            </div>
+
+            <div class="cv-sign-bar">
+              <div class="cv-sign-meta">
+                <span>{{ .Site.Params.location }}</span>
+                <span>{{ .Site.Params.email }}</span>
+              </div>
+              <div class="cv-sign-box">
+                <img src="/img/signature.png" width="140" height="52" loading="lazy" alt="Unterschrift Moritz Hammer" />
+                <span class="cv-sign-label">Moritz Hammer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

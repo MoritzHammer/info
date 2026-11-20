@@ -1,0 +1,13 @@
+baseURL = "https://info.moritzhammer.org/"
+languageCode = "de-DE"
+title = "Moritz Hammer · Anwendungsentwickler (C# / .NET & AL)"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
+
+[params]
+  description = "Moritz Hammer — Anwendungsentwickler bei Axians Infoma (C# / .NET & AL) und Staatlich geprüfter Techniker für Informationstechnik aus der Region Stuttgart."
+  author = "Moritz Hammer"
+  location = "Region Stuttgart"
+  email = "email@moritzhammer.org"
+  github = "https://github.com/MoritzHammer"
+  linkedin = "https://www.linkedin.com/in/moritz-hammer-393516174"
+  cv_url = "/cv.pdf"

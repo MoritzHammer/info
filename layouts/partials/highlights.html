@@ -1,0 +1,14 @@
+      <section class="highlights-strip" aria-label="Eckdaten auf einen Blick">
+        <div class="highlights-grid">
+          {{- range .Site.Data.profile.highlights }}
+          <article class="highlight-card highlight-card--{{ .color }}">
+            <div class="highlight-top">
+              <span class="highlight-idx">{{ .idx }}</span>
+              <span class="highlight-period">{{ .period }}</span>
+            </div>
+            <h2 class="highlight-title">{{ .title }}</h2>
+            <p class="highlight-desc">{{ .desc | safeHTML }}</p>
+          </article>
+          {{- end }}
+        </div>
+      </section>

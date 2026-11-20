@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body id="top">
+  <div class="page">
+    {{- partial "nav.html" . -}}
+
+    <main id="main">
+      {{- partial "hero.html" . -}}
+      {{- partial "highlights.html" . -}}
+      {{- partial "work.html" . -}}
+      {{- partial "focus.html" . -}}
+      {{- partial "cv.html" . -}}
+      {{- partial "homelab.html" . -}}
+
+      <section class="cta-section">
+        <h2>LASS UNS <em>ins Gespräch</em> KOMMEN.</h2>
+        <a href="mailto:{{ .Site.Params.email }}" class="pill pill--ink">Mail schreiben ↗</a>
+      </section>
+    </main>
+
+    {{- partial "footer.html" . -}}
+  </div>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

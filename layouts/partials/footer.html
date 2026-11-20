@@ -1,0 +1,70 @@
+    <footer class="footer panel" id="kontakt">
+      <div class="footer-banner">
+        <div class="copy">
+          <p class="eyebrow">Direkter Kontakt &amp; Unterlagen</p>
+          <h2>Alle Informationen auf einen <em>Blick.</em></h2>
+        </div>
+        <div class="actions" id="cv-actions">
+          <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--magenta">Lebenslauf (PDF) ↓</a>
+          <a href="mailto:{{ .Site.Params.email }}" class="pill pill--ink">{{ .Site.Params.email }} ↗</a>
+        </div>
+      </div>
+
+      <div class="top">
+        <div class="brand-col">
+          <div class="logo">
+            <span class="mark" aria-hidden="true">
+              <svg width="140" height="136" viewBox="0 0 140 136" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="c-yellow" cx="70" cy="44" r="42" fill="#F4B41A"/>
+                <circle class="c-cyan" cx="45" cy="87" r="42" fill="#08B4C4"/>
+                <circle class="c-magenta" cx="95" cy="87" r="42" fill="#E2366E"/>
+              </svg>
+            </span>
+            <span class="wordmark">Moritz Hammer</span>
+          </div>
+          <p class="brand-tagline">
+            Anwendungsentwickler (C# &amp; AL) bei Axians Infoma · Staatl. gepr. Techniker für Informationstechnik.
+          </p>
+        </div>
+
+        <div class="cols">
+          <div class="col">
+            <span class="eyebrow">Navigation</span>
+            <a href="#werdegang">Werdegang</a>
+            <a href="#schwerpunkte">Schwerpunkte</a>
+            <a href="#lebenslauf">Lebenslauf</a>
+            <a href="#architektur">Homelab</a>
+          </div>
+
+          <div class="col">
+            <span class="eyebrow">Kontakt &amp; Region</span>
+            <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
+            <span>{{ .Site.Params.location }}</span>
+            <div class="local-time">
+              <span class="clock">
+                <span id="clock-hm">--:--</span>
+                <span class="off" id="clock-off">CET</span>
+              </span>
+              <span class="zone-switch" role="group" aria-label="Zeitzone">
+                <button type="button" data-zone="Europe/Berlin" aria-pressed="true" title="Stuttgart">STR</button>
+                <button type="button" data-zone="Europe/London" aria-pressed="false" title="London">LDN</button>
+                <button type="button" data-zone="America/New_York" aria-pressed="false" title="New York">NYC</button>
+                <button type="button" data-zone="Asia/Tokyo" aria-pressed="false" title="Tokio">TYO</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="col" id="profile-links">
+            <span class="eyebrow">Profile &amp; CV</span>
+            <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf">CV Download (PDF) ↓</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <span>© 2026 Moritz Hammer · {{ .Site.Params.location }}</span>
+        <span>Generiert mit GoHugo · Lokal gehostete Schriften (DSGVO-konform) · Docker &amp; Portainer</span>
+      </div>
+    </footer>
