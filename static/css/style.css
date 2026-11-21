@@ -416,7 +416,14 @@ body.is-night .nav .cta .arrow {
   color: currentColor;
 }
 
-.mode-switch {
+.nav-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mode-switch,
+.lang-switch {
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   padding: 3px;
@@ -425,7 +432,8 @@ body.is-night .nav .cta .arrow {
   align-items: center;
 }
 
-.mode-switch button {
+.mode-switch button,
+.lang-switch a {
   background: transparent;
   border: 0;
   border-radius: 999px;
@@ -434,17 +442,27 @@ body.is-night .nav .cta .arrow {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  line-height: 1.25;
   opacity: 0.65;
   transition: opacity 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.mode-switch button[aria-pressed="true"] {
+.lang-switch a:hover {
+  opacity: 1;
+}
+
+.mode-switch button[aria-pressed="true"],
+.lang-switch a[aria-current="page"] {
   opacity: 1;
   background: #131313;
   color: #f6f5f1;
 }
 
-body.is-night .mode-switch button[aria-pressed="true"] {
+body.is-night .mode-switch button[aria-pressed="true"],
+body.is-night .lang-switch a[aria-current="page"] {
   background: #f6f5f1;
   color: #131313;
 }
@@ -505,7 +523,7 @@ body.is-night .mode-switch button[aria-pressed="true"] {
   display: flex;
 }
 
-.mobile-menu a {
+.mobile-menu > a {
   font-size: 16px;
   font-weight: 600;
   padding: 10px 0;
@@ -514,11 +532,18 @@ body.is-night .mode-switch button[aria-pressed="true"] {
 
 .mobile-menu-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 4px;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 6px;
   font-size: 13px;
   color: var(--muted);
+}
+
+.mobile-menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 /* ─── HERO SECTION ─── */
@@ -1747,7 +1772,207 @@ body.is-night .zone-switch button[aria-pressed="true"] {
   display: flex;
 }
 
+.footer-legal-inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-legal-inline a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-legal-inline a:hover {
+  color: var(--magenta);
+}
+
+/* ─── LEGAL PAGES (IMPRESSUM & DATENSCHUTZ) ─── */
+.legal-panel {
+  margin-top: 20px;
+  margin-bottom: 24px;
+  padding: clamp(28px, 4.5vw, 56px) var(--panel-pad);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3vw, 34px);
+}
+
+.legal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1.5px solid var(--line-strong);
+  padding-bottom: clamp(18px, 2.5vw, 28px);
+}
+
+.legal-head-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.legal-head-copy .panel-title {
+  margin-bottom: 0;
+}
+
+.legal-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.legal-updated {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.legal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 780px;
+}
+
+.legal-sec {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-sec h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(20px, 2.2vw, 26px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+.legal-sec p {
+  font-size: 15.5px;
+  line-height: 1.62;
+  color: var(--ink-2);
+}
+
+.legal-sec code {
+  font-size: 0.9em;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
+.legal-protected-card {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--cyan);
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+
+.legal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.legal-list li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.legal-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--magenta);
+}
+
+.legal-foot-links {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.legal-foot-links a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--panel-bg);
+  border-color: transparent;
+}
+
+/* ─── CUSTOM 404 PAGE ─── */
+.error-page .page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.error-card {
+  width: 100%;
+  max-width: 640px;
+  padding: clamp(32px, 5vw, 56px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.error-card .panel-title {
+  margin-bottom: 0;
+}
+
+.error-cmy {
+  width: 96px;
+  height: 96px;
+  position: relative;
+  isolation: isolate;
+  margin-bottom: 6px;
+}
+
+.error-copy {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 460px;
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
 /* ─── TABLET & MOBILE OPTIMIZATION ─── */
+@media (max-width: 1180px) {
+  .nav .links {
+    gap: 16px;
+  }
+  .nav .links > a:not(.cta) {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 1100px) {
   .meta-row {
     flex-direction: column;
@@ -1772,7 +1997,7 @@ body.is-night .zone-switch button[aria-pressed="true"] {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .nav {
     height: 54px;
     padding: 0 12px;
@@ -1801,7 +2026,8 @@ body.is-night .zone-switch button[aria-pressed="true"] {
   }
   .love-head,
   .journal-head,
-  .cv-panel-head {
+  .cv-panel-head,
+  .legal-head {
     flex-direction: column;
     align-items: flex-start;
   }
@@ -1952,9 +2178,18 @@ body.is-night .zone-switch button[aria-pressed="true"] {
   .work,
   .journal,
   .cv-panel,
+  .legal-panel,
   .footer {
     padding-left: 16px;
     padding-right: 16px;
+  }
+  .legal-head .pill,
+  .error-actions,
+  .error-actions .pill {
+    width: 100%;
+  }
+  .error-card {
+    padding: 28px 18px;
   }
   .footer {
     padding-top: 26px;
@@ -2012,6 +2247,12 @@ body.is-night .zone-switch button[aria-pressed="true"] {
   .footer .bottom {
     font-size: 11px;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
+  }
+  .footer-sep {
+    display: none;
+  }
+  .footer-built {
+    flex-basis: 100%;
   }
 }

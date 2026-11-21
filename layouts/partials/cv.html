@@ -1,11 +1,13 @@
-      {{- $cv := .Site.Data.profile.cv -}}
+      {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
+      {{- $ui := $p.ui -}}
+      {{- $cv := $p.cv -}}
       <section class="cv-panel panel" id="lebenslauf">
         <div class="cv-panel-head">
           <div class="cv-panel-title-wrap">
-            <p class="eyebrow">Lebenslauf · Curriculum Vitae</p>
-            <h2 class="panel-title">Stationen &amp; Qualifikationen</h2>
+            <p class="eyebrow">{{ $ui.cv_eyebrow }}</p>
+            <h2 class="panel-title">{{ $ui.cv_heading }}</h2>
           </div>
-          <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--ink" id="cv-section-download-btn">A4 PDF herunterladen ↓</a>
+          <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--ink" id="cv-section-download-btn">{{ $ui.cv_download }}</a>
         </div>
 
         <div class="cv-grid">
@@ -16,30 +18,30 @@
               </div>
               <div class="cv-profile-meta">
                 <h3>Moritz Hammer</h3>
-                <p>Anwendungsentwickler (C# &amp; AL)</p>
+                <p>{{ $ui.cv_role_sub }}</p>
               </div>
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>Kontakt &amp; Standort</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>{{ $ui.cv_sec_contact }}</h3>
               <ul class="cv-data-list">
                 <li>
-                  <span class="cv-data-label">E-Mail</span>
+                  <span class="cv-data-label">{{ $ui.cv_lbl_email }}</span>
                   <a class="cv-data-val" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
                 </li>
                 <li>
-                  <span class="cv-data-label">Region</span>
+                  <span class="cv-data-label">{{ $ui.cv_lbl_region }}</span>
                   <span class="cv-data-val">{{ .Site.Params.location }}</span>
                 </li>
                 <li>
-                  <span class="cv-data-label">Profile</span>
+                  <span class="cv-data-label">{{ $ui.cv_lbl_profiles }}</span>
                   <a class="cv-data-val" href="{{ .Site.Params.github }}" target="_blank" rel="noopener">github.com/MoritzHammer</a>
                 </li>
               </ul>
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>Arbeitsweise</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>{{ $ui.cv_sec_workstyle }}</h3>
               <ul class="cv-bullet-list">
                 {{- range $cv.work_style }}
                 <li>{{ . }}</li>
@@ -48,7 +50,7 @@
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--yellow"></span>Technik &amp; Stack</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--yellow"></span>{{ $ui.cv_sec_tech }}</h3>
               <ul class="cv-bullet-list cv-bullet-list--cyan">
                 {{- range $cv.tech_points }}
                 <li>{{ . | safeHTML }}</li>
@@ -57,7 +59,7 @@
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>Sprachen &amp; Fokus</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>{{ $ui.cv_sec_skills }}</h3>
               <div class="cv-skill-bars">
                 {{- range $cv.skills }}
                 {{- $filled := .filled -}}
@@ -78,7 +80,7 @@
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>Abschlüsse &amp; AEVO</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>{{ $ui.cv_sec_quals }}</h3>
               <ul class="cv-bullet-list cv-bullet-list--yellow">
                 {{- range $cv.qualifications }}
                 <li>{{ . | safeHTML }}</li>
@@ -89,7 +91,7 @@
 
           <div class="cv-main-col">
             <div class="cv-timeline-group">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>Berufserfahrung &amp; Weiterbildung</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>{{ $ui.cv_sec_exp }}</h3>
               <div class="cv-timeline-list">
                 {{- range $cv.experience }}
                 <article class="cv-entry{{ if .color }} cv-entry--{{ .color }}{{ end }}">
@@ -116,7 +118,7 @@
             </div>
 
             <div class="cv-timeline-group">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>Ausbildung</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>{{ $ui.cv_sec_edu }}</h3>
               <div class="cv-timeline-list">
                 {{- range $cv.education }}
                 <article class="cv-entry{{ if .color }} cv-entry--{{ .color }}{{ end }}">
@@ -148,7 +150,7 @@
                 <span>{{ .Site.Params.email }}</span>
               </div>
               <div class="cv-sign-box">
-                <img src="/img/signature.png" width="140" height="52" loading="lazy" alt="Unterschrift Moritz Hammer" />
+                <img src="/img/signature.png" width="140" height="52" loading="lazy" alt="{{ $ui.cv_sig_alt }}" />
                 <span class="cv-sign-label">Moritz Hammer</span>
               </div>
             </div>

@@ -1,5 +1,11 @@
+      {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
+      {{- $ui := $p.ui -}}
+      {{- $t0 := index $p.work_tiles 0 -}}
+      {{- $t1 := index $p.work_tiles 1 -}}
+      {{- $t2 := index $p.work_tiles 2 -}}
+      {{- $t3 := index $p.work_tiles 3 -}}
       <section class="work panel" id="werdegang">
-        <h2 class="panel-title">Werdegang &amp; Projekte</h2>
+        <h2 class="panel-title">{{ $ui.work_heading }}</h2>
 
         <div class="grid">
           <!-- Tile 1: Axians Infoma -->
@@ -12,21 +18,17 @@
                 <circle cx="508" cy="234" r="72" fill="#E2366E" opacity="0.85"/>
                 <line x1="48" y1="68" x2="572" y2="68" stroke="#08B4C4" stroke-opacity="0.35"/>
                 <line x1="48" y1="352" x2="572" y2="352" stroke="#08B4C4" stroke-opacity="0.35"/>
-                <text x="48" y="50" fill="#08B4C4" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">SEIT JULI 2026 · ENTERPRISE ERP</text>
+                <text x="48" y="50" fill="#08B4C4" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t0.svg_eyebrow }}</text>
                 <text class="svg-title" x="48" y="232" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="76" letter-spacing="1">C# &amp; AL</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">Axians Infoma · Business Central &amp; .NET</text>
+                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t0.svg_sub }}</text>
               </svg>
             </div>
             <div class="meta">
               <div class="left">
-                <span class="chip chip--sm chip--dark">Seit 07/2026 · Aktuell</span>
-                <h3>Axians Infoma</h3>
+                <span class="chip chip--sm chip--dark">{{ $t0.chip }}</span>
+                <h3>{{ $t0.title }}</h3>
               </div>
-              <p>
-                Tätig als <strong>Anwendungsentwickler</strong>. Entwicklung und Weiterentwicklung
-                kaufmännischer und kommunaler Fachanwendungen auf Basis von <strong>C# / .NET</strong> sowie
-                <strong>AL (Microsoft Dynamics 365 Business Central)</strong>.
-              </p>
+              <p>{{ $t0.desc | safeHTML }}</p>
             </div>
           </article>
 
@@ -40,20 +42,17 @@
                 <circle cx="512" cy="226" r="44" fill="#08B4C4" opacity="0.9"/>
                 <line x1="48" y1="68" x2="572" y2="68" stroke="#c28700" stroke-opacity="0.35"/>
                 <line x1="48" y1="352" x2="572" y2="352" stroke="#c28700" stroke-opacity="0.35"/>
-                <text x="48" y="50" fill="#c28700" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">09/2025 – 06/2026 · ITS STUTTGART</text>
-                <text class="svg-title" x="48" y="232" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="60">TECHNIKER IT</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">Systemarchitektur, Projektarbeit &amp; AEVO</text>
+                <text x="48" y="50" fill="#c28700" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t1.svg_eyebrow }}</text>
+                <text class="svg-title" x="48" y="232" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="60">{{ if eq .Site.Language.Lang "en" }}IT TECHNICIAN{{ else }}TECHNIKER IT{{ end }}</text>
+                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t1.svg_sub }}</text>
               </svg>
             </div>
             <div class="meta">
               <div class="left">
-                <span class="chip chip--sm chip--dark">09/2025 – 06/2026</span>
-                <h3>Techniker für IT</h3>
+                <span class="chip chip--sm chip--dark">{{ $t1.chip }}</span>
+                <h3>{{ $t1.title }}</h3>
               </div>
-              <p>
-                Weiterbildung an der ITS Stuttgart zum <strong>Staatlich geprüften Techniker für Informationstechnik</strong>
-                mit Schwerpunkt Softwareentwicklung, Netzwerktechnik und Projektarbeit sowie Abschluss der <strong>Ausbildereignungsprüfung (AEVO)</strong>.
-              </p>
+              <p>{{ $t1.desc | safeHTML }}</p>
             </div>
           </article>
 
@@ -67,21 +66,18 @@
                 <circle cx="508" cy="242" r="56" fill="#F4B41A" opacity="0.85"/>
                 <line x1="48" y1="68" x2="572" y2="68" stroke="#08B4C4" stroke-opacity="0.35"/>
                 <line x1="48" y1="352" x2="572" y2="352" stroke="#08B4C4" stroke-opacity="0.35"/>
-                <text x="48" y="50" fill="#08B4C4" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">02/2024 – 08/2025 · INDUSTRIAL IOT &amp; WEB</text>
+                <text x="48" y="50" fill="#08B4C4" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t2.svg_eyebrow }}</text>
                 <text class="svg-title" x="48" y="198" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="64">ANGULAR &amp;</text>
                 <text class="svg-title" x="48" y="264" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="64">IO-LINK</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">Balluff GmbH · Webanwendungen &amp; Sensorik</text>
+                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t2.svg_sub }}</text>
               </svg>
             </div>
             <div class="meta">
               <div class="left">
-                <span class="chip chip--sm chip--dark">2021 – 08/2025</span>
-                <h3>Balluff GmbH</h3>
+                <span class="chip chip--sm chip--dark">{{ $t2.chip }}</span>
+                <h3>{{ $t2.title }}</h3>
               </div>
-              <p>
-                Tätig als <strong>Anwendungsprogrammierer</strong> (02/2024 – 08/2025) für Angular-Webanwendungen,
-                IO-Link-Implementierungen sowie RFID- und SmartLight-Sensorikprojekte im Anschluss an meine Ausbildung zum <strong>Fachinformatiker (IHK)</strong>.
-              </p>
+              <p>{{ $t2.desc | safeHTML }}</p>
             </div>
           </article>
 
@@ -97,35 +93,29 @@
                 <circle cx="464" cy="222" r="28" fill="#E2366E" opacity="0.88"/>
                 <line x1="48" y1="68" x2="572" y2="68" stroke="#131313" stroke-opacity="0.18"/>
                 <line x1="48" y1="352" x2="572" y2="352" stroke="#131313" stroke-opacity="0.18"/>
-                <text x="48" y="50" fill="#e2366e" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">HUGO · DOCKER · PROXMOX</text>
+                <text x="48" y="50" fill="#e2366e" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t3.svg_eyebrow }}</text>
                 <text class="svg-title" x="48" y="232" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="74">HOMELAB</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">Container-Orchestrierung, Nginx &amp; Cloudflare</text>
+                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t3.svg_sub }}</text>
               </svg>
             </div>
             <div class="meta">
               <div class="left">
-                <span class="chip chip--sm chip--dark">DevOps &amp; Infra</span>
-                <h3>Docker &amp; Homelab</h3>
+                <span class="chip chip--sm chip--dark">{{ $t3.chip }}</span>
+                <h3>{{ $t3.title }}</h3>
               </div>
-              <p>
-                Aufbau und Betrieb einer eigenen <strong>Proxmox-Umgebung</strong> mit <strong>Docker</strong>,
-                <strong>Portainer</strong>, Nginx Reverse Proxies und automatisierten Container-Deployments.
-              </p>
+              <p>{{ $t3.desc | safeHTML }}</p>
             </div>
           </article>
         </div>
 
         <div class="team" id="expertise">
-          <h3 class="team-title">Saubere Umsetzung — von der Geschäftslogik bis zum Deployment.</h3>
-          <p>
-            Mein Fokus liegt auf nachvollziehbarem Code und klaren Schnittstellen: strukturierte Backend- und
-            ERP-Entwicklung in C# und AL, wartbare Web-Frontends mit Angular sowie reproduzierbare Builds mit Hugo und Docker.
-          </p>
+          <h3 class="team-title">{{ $ui.team_title }}</h3>
+          <p>{{ $ui.team_body }}</p>
           <ul class="services">
-            {{- range .Site.Data.profile.stack_chips }}
+            {{- range $p.stack_chips }}
             <li><span class="chip chip--md chip--dark">{{ . }}</span></li>
             {{- end }}
           </ul>
-          <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">GitHub Repositories ansehen ↗</a>
+          <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">{{ $ui.team_cta }}</a>
         </div>
       </section>

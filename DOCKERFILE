@@ -5,5 +5,6 @@ COPY . .
 RUN hugo --minify && chmod -R a+rX /src/public
 
 FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /src/public/ /usr/share/nginx/html/
 RUN chmod -R a+rX /usr/share/nginx/html

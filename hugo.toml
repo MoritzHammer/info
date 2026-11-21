@@ -1,13 +1,57 @@
 baseURL = "https://info.moritzhammer.org/"
-languageCode = "de-DE"
-title = "Moritz Hammer · Anwendungsentwickler (C# / .NET & AL)"
+defaultContentLanguage = "de"
+defaultContentLanguageInSubdir = false
 disableKinds = ["taxonomy", "term", "RSS", "sitemap"]
 
+[languages]
+  [languages.de]
+    languageCode = "de-DE"
+    languageName = "DE"
+    weight = 1
+    title = "Moritz Hammer · Anwendungsentwickler (C# / .NET & AL)"
+    [languages.de.params]
+      description = "Moritz Hammer — Anwendungsentwickler bei Axians Infoma (C# / .NET & AL) und Staatlich geprüfter Techniker für Informationstechnik aus der Region Stuttgart."
+      location = "Region Stuttgart"
+      og_locale = "de_DE"
+      og_image = "/og-card.png"
+      og_image_alt = "Moritz Hammer — Anwendungsentwickler für C# / .NET & AL aus der Region Stuttgart"
+      imprint_path = "/impressum/"
+      privacy_path = "/datenschutz/"
+
+  [languages.en]
+    languageCode = "en-US"
+    languageName = "EN"
+    weight = 2
+    title = "Moritz Hammer · Application Developer (C# / .NET & AL)"
+    [languages.en.params]
+      description = "Moritz Hammer — Application Developer at Axians Infoma (C# / .NET & AL) and State-Certified IT Technician from the Stuttgart Region, Germany."
+      location = "Stuttgart Region, Germany"
+      og_locale = "en_US"
+      og_image = "/og-card-en.png"
+      og_image_alt = "Moritz Hammer — Application Developer for C# / .NET & AL from the Stuttgart Region"
+      imprint_path = "/en/imprint/"
+      privacy_path = "/en/privacy/"
+
 [params]
-  description = "Moritz Hammer — Anwendungsentwickler bei Axians Infoma (C# / .NET & AL) und Staatlich geprüfter Techniker für Informationstechnik aus der Region Stuttgart."
   author = "Moritz Hammer"
-  location = "Region Stuttgart"
   email = "email@moritzhammer.org"
   github = "https://github.com/MoritzHammer"
   linkedin = "https://www.linkedin.com/in/moritz-hammer-393516174"
   cv_url = "/cv.pdf"
+
+# ─── IMPRESSUM & RECHTLICHES (§ 5 DDG / § 18 Abs. 2 MStV) ───
+# Trage hier deine Anschrift ein (und optional Telefon).
+# Diese Daten erscheinen AUSSCHLIESSLICH auf /impressum/ & /datenschutz/ (bzw. /en/imprint/ & /en/privacy/),
+# sind per noindex/robots.txt/X-Robots-Tag vor Suchmaschinen geschützt und werden im HTML verschleiert ausgegeben.
+[params.legal]
+  name = "Moritz Hammer"
+  street = "[Straße und Hausnummer eintragen]"
+  postal_city = "[PLZ Ort eintragen]"
+  country_de = "Deutschland"
+  country_en = "Germany"
+  phone = ""
+  email_user = "email"
+  email_domain = "moritzhammer.org"
+  responsible_ddg = "Moritz Hammer"
+  last_updated_de = "November 2026"
+  last_updated_en = "November 2026"

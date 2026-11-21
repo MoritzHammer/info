@@ -1,11 +1,14 @@
+    {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
+    {{- $ui := $p.ui -}}
+    {{- $anchorBase := cond .IsHome "" .Site.Home.RelPermalink -}}
     <footer class="footer panel" id="kontakt">
       <div class="footer-banner">
         <div class="copy">
-          <p class="eyebrow">Direkter Kontakt &amp; Unterlagen</p>
-          <h2>Alle Informationen auf einen <em>Blick.</em></h2>
+          <p class="eyebrow">{{ $ui.footer_eyebrow }}</p>
+          <h2>{{ $ui.footer_heading_1 }} <em>{{ $ui.footer_heading_em }}</em></h2>
         </div>
         <div class="actions" id="cv-actions">
-          <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--magenta">Lebenslauf (PDF) ↓</a>
+          <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--magenta">{{ $ui.footer_cv_btn }}</a>
           <a href="mailto:{{ .Site.Params.email }}" class="pill pill--ink">{{ .Site.Params.email }} ↗</a>
         </div>
       </div>
@@ -22,22 +25,20 @@
             </span>
             <span class="wordmark">Moritz Hammer</span>
           </div>
-          <p class="brand-tagline">
-            Anwendungsentwickler (C# &amp; AL) bei Axians Infoma · Staatl. gepr. Techniker für Informationstechnik.
-          </p>
+          <p class="brand-tagline">{{ $ui.footer_tagline }}</p>
         </div>
 
         <div class="cols">
           <div class="col">
-            <span class="eyebrow">Navigation</span>
-            <a href="#werdegang">Werdegang</a>
-            <a href="#schwerpunkte">Schwerpunkte</a>
-            <a href="#lebenslauf">Lebenslauf</a>
-            <a href="#architektur">Homelab</a>
+            <span class="eyebrow">{{ $ui.footer_col_nav }}</span>
+            <a href="{{ $anchorBase }}#werdegang">{{ $ui.nav_work }}</a>
+            <a href="{{ $anchorBase }}#schwerpunkte">{{ $ui.nav_focus }}</a>
+            <a href="{{ $anchorBase }}#lebenslauf">{{ $ui.nav_cv }}</a>
+            <a href="{{ $anchorBase }}#architektur">{{ $ui.nav_homelab }}</a>
           </div>
 
           <div class="col">
-            <span class="eyebrow">Kontakt &amp; Region</span>
+            <span class="eyebrow">{{ $ui.footer_col_contact }}</span>
             <a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a>
             <span>{{ .Site.Params.location }}</span>
             <div class="local-time">
@@ -45,26 +46,34 @@
                 <span id="clock-hm">--:--</span>
                 <span class="off" id="clock-off">CET</span>
               </span>
-              <span class="zone-switch" role="group" aria-label="Zeitzone">
+              <span class="zone-switch" role="group" aria-label="{{ $ui.footer_tz_aria }}">
                 <button type="button" data-zone="Europe/Berlin" aria-pressed="true" title="Stuttgart">STR</button>
                 <button type="button" data-zone="Europe/London" aria-pressed="false" title="London">LDN</button>
                 <button type="button" data-zone="America/New_York" aria-pressed="false" title="New York">NYC</button>
-                <button type="button" data-zone="Asia/Tokyo" aria-pressed="false" title="Tokio">TYO</button>
+                <button type="button" data-zone="Asia/Tokyo" aria-pressed="false" title="Tokyo">TYO</button>
               </span>
             </div>
           </div>
 
           <div class="col" id="profile-links">
-            <span class="eyebrow">Profile &amp; CV</span>
+            <span class="eyebrow">{{ $ui.footer_col_profiles }}</span>
             <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener">GitHub ↗</a>
             <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a>
-            <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf">CV Download (PDF) ↓</a>
+            <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf">{{ $ui.footer_cv_link }}</a>
+            <a href="{{ .Site.Params.imprint_path }}" rel="nofollow">{{ $ui.footer_imprint }}</a>
+            <a href="{{ .Site.Params.privacy_path }}" rel="nofollow">{{ $ui.footer_privacy }}</a>
           </div>
         </div>
       </div>
 
       <div class="bottom">
         <span>© 2026 Moritz Hammer · {{ .Site.Params.location }}</span>
-        <span>Generiert mit GoHugo · Lokal gehostete Schriften (DSGVO-konform) · Docker &amp; Portainer</span>
+        <span class="footer-legal-inline">
+          <a href="{{ .Site.Params.imprint_path }}" rel="nofollow">{{ $ui.footer_imprint }}</a>
+          <span aria-hidden="true">·</span>
+          <a href="{{ .Site.Params.privacy_path }}" rel="nofollow">{{ $ui.footer_privacy }}</a>
+          <span class="footer-sep" aria-hidden="true">·</span>
+          <span class="footer-built">{{ $ui.footer_built }}</span>
+        </span>
       </div>
     </footer>

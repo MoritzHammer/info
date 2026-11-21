@@ -1,6 +1,7 @@
-      <section class="highlights-strip" aria-label="Eckdaten auf einen Blick">
+      {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
+      <section class="highlights-strip" aria-label="{{ $p.ui.highlights_aria }}">
         <div class="highlights-grid">
-          {{- range .Site.Data.profile.highlights }}
+          {{- range $p.highlights }}
           <article class="highlight-card highlight-card--{{ .color }}">
             <div class="highlight-top">
               <span class="highlight-idx">{{ .idx }}</span>

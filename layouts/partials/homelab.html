@@ -1,11 +1,13 @@
+      {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
+      {{- $ui := $p.ui -}}
       <section class="journal panel" id="architektur">
         <div class="journal-head">
-          <h2 class="panel-title">Technik im Detail</h2>
-          <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">Auf GitHub folgen ↗</a>
+          <h2 class="panel-title">{{ $ui.homelab_heading }}</h2>
+          <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">{{ $ui.homelab_cta }}</a>
         </div>
 
         <div class="posts">
-          {{- range .Site.Data.profile.homelab }}
+          {{- range $p.homelab }}
           <article class="post-card">
             <div class="meta">
               <span class="chip chip--sm chip--outline">{{ .tag }}</span>

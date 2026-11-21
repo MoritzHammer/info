@@ -1,10 +1,13 @@
 // ─── 1. NON-BLOCKING SESSION-ONCE CMY INTRO ANIMATION ───
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  try {
-    if (sessionStorage.getItem('mh_intro_seen') === '1') return;
-    sessionStorage.setItem('mh_intro_seen', '1');
-  } catch (e) {}
+
+  function shouldSkip() {
+    if (document.body && (document.body.classList.contains('legal-page') || document.body.classList.contains('error-page'))) {
+      return true;
+    }
+    return false;
+  }
 
   var root = document.documentElement;
   var INK = '#131313', STONE = '#f6f5f1';
@@ -23,6 +26,12 @@
   }
 
   function runIntro() {
+    if (shouldSkip()) return finish();
+    try {
+      if (sessionStorage.getItem('mh_intro_seen') === '1') return finish();
+      sessionStorage.setItem('mh_intro_seen', '1');
+    } catch (e) {}
+
     var navLogo = document.querySelector('.nav .logo');
     var navMark = navLogo && navLogo.querySelector('svg');
     var navWord = navLogo && navLogo.querySelector('.wordmark');
@@ -75,7 +84,7 @@
     });
 
     var sub = document.createElement('div');
-    sub.textContent = 'ANWENDUNGSENTWICKLER · C# / .NET & AL';
+    sub.textContent = (document.body && document.body.getAttribute('data-intro-sub')) || 'ANWENDUNGSENTWICKLER · C# / .NET & AL';
     var subTracking = innerWidth < 640 ? '0.11em' : '0.18em';
     sub.style.cssText = 'font-family:var(--font-sans);font-size:' + Math.max(10, Math.round(7.5 * k)) + 'px;font-weight:600;letter-spacing:' + subTracking + ';color:rgba(246,245,241,0.65);opacity:0;text-align:center;max-width:90vw;padding:0 12px;line-height:1.4;will-change:transform,opacity';
 
@@ -159,28 +168,29 @@
   setTimeout(function () { if (!done) finish(); }, 3500);
 })();
 
-// ─── 2. STICKY NAVBAR & MOBILE MENU ───
+// ─── 2. STICKY NAVBAR, MOBILE MENU & DE/EN LANGUAGE SWITCHER ───
 (function () {
   var nav = document.getElementById('main-nav');
-  if (!nav) return;
-  var compact = false;
-  var ticking = false;
-  function updateNav() {
-    var y = window.scrollY;
-    var next = compact ? y > 18 : y > 54;
-    if (next !== compact) {
-      compact = next;
-      nav.classList.toggle('compact', compact);
+  if (nav) {
+    var compact = false;
+    var ticking = false;
+    function updateNav() {
+      var y = window.scrollY;
+      var next = compact ? y > 18 : y > 54;
+      if (next !== compact) {
+        compact = next;
+        nav.classList.toggle('compact', compact);
+      }
+      ticking = false;
     }
-    ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(updateNav);
+        ticking = true;
+      }
+    }, { passive: true });
+    updateNav();
   }
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      requestAnimationFrame(updateNav);
-      ticking = true;
-    }
-  }, { passive: true });
-  updateNav();
 
   var menuBtn = document.getElementById('menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
@@ -209,6 +219,23 @@
       }
     });
   }
+
+  // Preserve anchor hash & remember chosen language on DE/EN links
+  document.querySelectorAll('[data-lang-link]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var targetLang = link.getAttribute('data-lang-link');
+      try {
+        if (targetLang) localStorage.setItem('mh_lang', targetLang);
+      } catch (err) {}
+      if (window.location.hash && !link.getAttribute('aria-current')) {
+        var base = link.getAttribute('href') || '/';
+        if (base.indexOf('#') === -1) {
+          e.preventDefault();
+          window.location.href = base + window.location.hash;
+        }
+      }
+    });
+  });
 })();
 
 // ─── 3. PERIODIC 3-CIRCLE CMY LOGO ORBIT ───
@@ -244,17 +271,25 @@
   setInterval(spinMarks, 14000);
 })();
 
-// ─── 4. ROTATING SERIF HEADLINE PHRASE ───
+// ─── 4. ROTATING SERIF HEADLINE PHRASE (DE / EN DATA-DRIVEN) ───
 (function () {
+  var el = document.getElementById('rotating-phrase');
+  if (!el) return;
   var items = [
     { text: 'für C# & AL.',               color: 'var(--magenta)' },
     { text: 'im .NET-Ökosystem.',         color: 'var(--cyan)' },
     { text: 'für Business Central.',      color: 'var(--yellow-deep)' },
     { text: 'aus der Region Stuttgart.',  color: 'var(--violet)' }
   ];
+  try {
+    var raw = el.getAttribute('data-phrases');
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (Array.isArray(parsed) && parsed.length > 0) items = parsed;
+    }
+  } catch (e) {}
+
   var idx = 0;
-  var el = document.getElementById('rotating-phrase');
-  if (!el) return;
   setInterval(function () {
     if (document.hidden) return;
     el.style.opacity = '0';
@@ -373,4 +408,34 @@ function setNightMode(night) {
 
   tick();
   setInterval(tick, 15000);
+})();
+
+// ─── 7. ANTI-HARVESTER LEGAL CONTACT HYDRATION ───
+(function () {
+  function decodeB64(str) {
+    if (!str) return '';
+    try {
+      var bin = atob(str);
+      var bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder('utf-8').decode(bytes);
+    } catch (e) {
+      return '';
+    }
+  }
+
+  document.querySelectorAll('[data-mh-b64]').forEach(function (el) {
+    var val = decodeB64(el.getAttribute('data-mh-b64'));
+    if (val) el.textContent = val;
+  });
+
+  document.querySelectorAll('[data-mh-mail-u][data-mh-mail-d]').forEach(function (el) {
+    var u = decodeB64(el.getAttribute('data-mh-mail-u'));
+    var d = decodeB64(el.getAttribute('data-mh-mail-d'));
+    if (u && d) {
+      var addr = u + '@' + d;
+      el.textContent = addr;
+      el.setAttribute('href', 'mailto:' + addr);
+    }
+  });
 })();

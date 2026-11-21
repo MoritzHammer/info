@@ -1,6 +1,17 @@
+    {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
+    {{- $ui := $p.ui -}}
+    {{- $home := .Site.Home.RelPermalink -}}
+    {{- $anchorBase := cond .IsHome "" $home -}}
+    {{- $deURL := "/" -}}
+    {{- $enURL := "/en/" -}}
+    {{- range .AllTranslations -}}
+      {{- if eq .Language.Lang "de" }}{{- $deURL = .RelPermalink -}}{{- end -}}
+      {{- if eq .Language.Lang "en" }}{{- $enURL = .RelPermalink -}}{{- end -}}
+    {{- end -}}
+    {{- $curLang := .Site.Language.Lang -}}
     <div class="nav-wrap">
       <header class="nav" id="main-nav">
-        <a class="logo" href="#top" aria-label="Moritz Hammer, Startseite">
+        <a class="logo" href="{{ if .IsHome }}#top{{ else }}{{ $home }}{{ end }}" aria-label="{{ $ui.home_aria }}">
           <span class="mark" aria-hidden="true" data-spin>
             <svg width="140" height="136" viewBox="0 0 140 136" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle class="c-yellow" cx="70" cy="44" r="42" fill="#F4B41A"/>
@@ -11,36 +22,51 @@
           <span class="wordmark">MORITZ HAMMER</span>
         </a>
 
-        <nav class="links" aria-label="Hauptnavigation">
-          <a href="#werdegang">Werdegang</a>
-          <a href="#schwerpunkte">Schwerpunkte</a>
-          <a href="#lebenslauf">Lebenslauf</a>
-          <a href="#architektur">Homelab</a>
-          <a class="cta" href="#kontakt">
-            Kontakt <span class="arrow" aria-hidden="true">↗</span>
+        <nav class="links" aria-label="{{ $ui.nav_aria }}">
+          <a href="{{ $anchorBase }}#werdegang">{{ $ui.nav_work }}</a>
+          <a href="{{ $anchorBase }}#schwerpunkte">{{ $ui.nav_focus }}</a>
+          <a href="{{ $anchorBase }}#lebenslauf">{{ $ui.nav_cv }}</a>
+          <a href="{{ $anchorBase }}#architektur">{{ $ui.nav_homelab }}</a>
+          <a class="cta" href="{{ $anchorBase }}#kontakt">
+            {{ $ui.nav_contact }} <span class="arrow" aria-hidden="true">↗</span>
           </a>
-          <div class="mode-switch" role="group" aria-label="Darstellung">
-            <button type="button" id="btn-day" aria-pressed="true">Tag</button>
-            <button type="button" id="btn-night" aria-pressed="false">Nacht</button>
+          <div class="nav-controls">
+            <div class="lang-switch" role="group" aria-label="{{ $ui.lang_aria }}">
+              <a href="{{ $deURL }}" data-lang-link="de"{{ if eq $curLang "de" }} aria-current="page"{{ end }}>DE</a>
+              <a href="{{ $enURL }}" data-lang-link="en"{{ if eq $curLang "en" }} aria-current="page"{{ end }}>EN</a>
+            </div>
+            <div class="mode-switch" role="group" aria-label="{{ $ui.mode_aria }}">
+              <button type="button" id="btn-day" aria-pressed="true">{{ $ui.day }}</button>
+              <button type="button" id="btn-night" aria-pressed="false">{{ $ui.night }}</button>
+            </div>
           </div>
         </nav>
 
-        <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-label="Menü">
+        <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-label="{{ $ui.menu_aria }}">
           <span class="bars" aria-hidden="true"></span>
         </button>
       </header>
 
       <div class="mobile-menu" id="mobile-menu">
-        <a href="#werdegang">Werdegang &amp; Projekte</a>
-        <a href="#schwerpunkte">Fokus &amp; Praxis</a>
-        <a href="#lebenslauf">Lebenslauf</a>
-        <a href="#architektur">Homelab &amp; Hugo</a>
-        <a href="#kontakt">Kontakt aufnehmen ↗</a>
+        <a href="{{ $anchorBase }}#werdegang">{{ $ui.mob_work }}</a>
+        <a href="{{ $anchorBase }}#schwerpunkte">{{ $ui.mob_focus }}</a>
+        <a href="{{ $anchorBase }}#lebenslauf">{{ $ui.mob_cv }}</a>
+        <a href="{{ $anchorBase }}#architektur">{{ $ui.mob_homelab }}</a>
+        <a href="{{ $anchorBase }}#kontakt">{{ $ui.mob_contact }}</a>
         <div class="mobile-menu-footer">
-          <span>Darstellung</span>
-          <div class="mode-switch" role="group" aria-label="Darstellung mobil">
-            <button type="button" id="btn-day-mob" aria-pressed="true">Tag</button>
-            <button type="button" id="btn-night-mob" aria-pressed="false">Nacht</button>
+          <div class="mobile-menu-row">
+            <span>{{ $ui.mob_lang }}</span>
+            <div class="lang-switch" role="group" aria-label="{{ $ui.lang_aria }}">
+              <a href="{{ $deURL }}" data-lang-link="de"{{ if eq $curLang "de" }} aria-current="page"{{ end }}>DE</a>
+              <a href="{{ $enURL }}" data-lang-link="en"{{ if eq $curLang "en" }} aria-current="page"{{ end }}>EN</a>
+            </div>
+          </div>
+          <div class="mobile-menu-row">
+            <span>{{ $ui.mob_theme }}</span>
+            <div class="mode-switch" role="group" aria-label="{{ $ui.mode_aria }}">
+              <button type="button" id="btn-day-mob" aria-pressed="true">{{ $ui.day }}</button>
+              <button type="button" id="btn-night-mob" aria-pressed="false">{{ $ui.night }}</button>
+            </div>
           </div>
         </div>
       </div>

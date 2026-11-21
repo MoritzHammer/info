@@ -1,0 +1,329 @@
+{{- $lang := .Site.Language.Lang -}}
+{{- $p := index .Site.Data (printf "profile_%s" $lang) -}}
+{{- $ui := $p.ui -}}
+{{- $legal := .Site.Params.legal -}}
+{{- $country := cond (eq $lang "en") $legal.country_en $legal.country_de -}}
+{{- $updated := cond (eq $lang "en") $legal.last_updated_en $legal.last_updated_de -}}
+{{- $kind := .Params.legal_kind | default "imprint" -}}
+<!DOCTYPE html>
+<html lang="{{ $lang }}">
+<head>
+  {{- partial "head.html" . -}}
+</head>
+<body id="top" class="legal-page" data-intro-sub="{{ $ui.intro_sub }}">
+  <div class="page">
+    {{- partial "nav.html" . -}}
+
+    <main id="main">
+      <article class="legal-panel panel">
+        <div class="legal-head">
+          <div class="legal-head-copy">
+            <p class="eyebrow">{{ .Params.eyebrow }}</p>
+            <h1 class="panel-title">{{ .Params.heading }}</h1>
+          </div>
+          <a href="{{ .Site.Home.RelPermalink }}" class="pill pill--ink">{{ $ui.legal_back }}</a>
+        </div>
+
+        <div class="legal-meta-bar">
+          <span class="chip chip--sm chip--outline">{{ if eq $lang "en" }}noindex · Bot-protected{{ else }}noindex · Bot-geschützt{{ end }}</span>
+          <span class="legal-updated">{{ $ui.legal_updated }}: {{ $updated }}</span>
+        </div>
+
+        <div class="legal-body">
+          {{- if eq $kind "imprint" -}}
+            {{- if eq $lang "en" -}}
+            <section class="legal-sec">
+              <h2>Information Pursuant to § 5 DDG (German Digital Services Act)</h2>
+              <div class="legal-protected-card">
+                <p>
+                  <strong data-mh-b64="{{ $legal.name | base64Encode }}"></strong><br />
+                  <span data-mh-b64="{{ $legal.street | base64Encode }}"></span><br />
+                  <span data-mh-b64="{{ $legal.postal_city | base64Encode }}"></span><br />
+                  <span data-mh-b64="{{ $country | base64Encode }}"></span>
+                </p>
+                <noscript>
+                  <p><em>Please enable JavaScript to view spam-protected address details.</em></p>
+                </noscript>
+              </div>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Contact</h2>
+              <div class="legal-protected-card">
+                <p>
+                  Email: <a class="text-link" data-mh-mail-u="{{ $legal.email_user | base64Encode }}" data-mh-mail-d="{{ $legal.email_domain | base64Encode }}" href="#">…</a>
+                  {{- if $legal.phone }}<br />Phone: <span data-mh-b64="{{ $legal.phone | base64Encode }}"></span>{{- end }}
+                </p>
+                <noscript>
+                  <p>Email: {{ $legal.email_user }} [at] {{ $legal.email_domain }}</p>
+                </noscript>
+              </div>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Person Responsible for Content (§ 18 (2) MStV)</h2>
+              <p>
+                <span data-mh-b64="{{ $legal.responsible_ddg | base64Encode }}"></span>
+                (address as listed above).
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Purpose of This Website</h2>
+              <p>
+                This website is a personal portfolio and online curriculum vitae presenting professional background,
+                qualifications, and self-hosted technical projects. No commercial goods or paid services are offered here.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Liability for Content &amp; External Links</h2>
+              <p>
+                The contents of this site were created with great care. However, no guarantee can be given for accuracy,
+                completeness, or timeliness. External links (such as GitHub or LinkedIn) lead to third-party content over
+                which I have no influence; the respective operators are solely responsible for those pages.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Copyright</h2>
+              <p>
+                All original texts, layouts, and graphics created on this site are subject to German copyright law.
+                Reproduction or distribution beyond statutory limits requires prior written consent.
+              </p>
+            </section>
+            {{- else -}}
+            <section class="legal-sec">
+              <h2>Angaben gemäß § 5 DDG</h2>
+              <div class="legal-protected-card">
+                <p>
+                  <strong data-mh-b64="{{ $legal.name | base64Encode }}"></strong><br />
+                  <span data-mh-b64="{{ $legal.street | base64Encode }}"></span><br />
+                  <span data-mh-b64="{{ $legal.postal_city | base64Encode }}"></span><br />
+                  <span data-mh-b64="{{ $country | base64Encode }}"></span>
+                </p>
+                <noscript>
+                  <p><em>Bitte JavaScript aktivieren, um die vor Spam-Bots geschützte Anschrift anzuzeigen.</em></p>
+                </noscript>
+              </div>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Kontakt</h2>
+              <div class="legal-protected-card">
+                <p>
+                  E-Mail: <a class="text-link" data-mh-mail-u="{{ $legal.email_user | base64Encode }}" data-mh-mail-d="{{ $legal.email_domain | base64Encode }}" href="#">…</a>
+                  {{- if $legal.phone }}<br />Telefon: <span data-mh-b64="{{ $legal.phone | base64Encode }}"></span>{{- end }}
+                </p>
+                <noscript>
+                  <p>E-Mail: {{ $legal.email_user }} [at] {{ $legal.email_domain }}</p>
+                </noscript>
+              </div>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+              <p>
+                <span data-mh-b64="{{ $legal.responsible_ddg | base64Encode }}"></span>
+                (Anschrift wie oben angegeben).
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Zweck dieser Webseite</h2>
+              <p>
+                Diese Webseite dient als persönliche Online-Visitenkarte und Lebenslauf zur Darstellung von
+                beruflichem Werdegang, Qualifikationen und technischen Projekten. Es werden keine kostenpflichtigen
+                Waren oder Dienstleistungen angeboten.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Haftung für Inhalte &amp; externe Links</h2>
+              <p>
+                Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit
+                und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Diese Webseite enthält Links zu
+                externen Webseiten Dritter (z. B. GitHub und LinkedIn), auf deren Inhalte ich keinen Einfluss habe;
+                für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>Urheberrecht</h2>
+              <p>
+                Die auf dieser Webseite erstellten Inhalte, Texte und Grafiken unterliegen dem deutschen Urheberrecht.
+                Eine Vervielfältigung oder Verbreitung außerhalb der gesetzlichen Schranken bedarf der vorherigen
+                schriftlichen Zustimmung.
+              </p>
+            </section>
+            {{- end -}}
+          {{- else -}}
+            {{- if eq $lang "en" -}}
+            <section class="legal-sec">
+              <h2>1. Controller (Art. 4 (7) GDPR)</h2>
+              <div class="legal-protected-card">
+                <p>
+                  <strong data-mh-b64="{{ $legal.name | base64Encode }}"></strong> ·
+                  <span data-mh-b64="{{ $legal.street | base64Encode }}"></span>,
+                  <span data-mh-b64="{{ $legal.postal_city | base64Encode }}"></span>,
+                  <span data-mh-b64="{{ $country | base64Encode }}"></span><br />
+                  Email: <a class="text-link" data-mh-mail-u="{{ $legal.email_user | base64Encode }}" data-mh-mail-d="{{ $legal.email_domain | base64Encode }}" href="#">…</a>
+                </p>
+                <noscript>
+                  <p>Contact: {{ $legal.email_user }} [at] {{ $legal.email_domain }}</p>
+                </noscript>
+              </div>
+            </section>
+
+            <section class="legal-sec">
+              <h2>2. Hosting, DNS &amp; Server Log Files</h2>
+              <p>
+                This static website is self-hosted on a private Proxmox/Docker infrastructure running Nginx and routed
+                through Cloudflare (Cloudflare, Inc.) for DNS, TLS encryption, and DDoS/bot protection. When you visit
+                this site, technically necessary access data (IP address, timestamp, requested path, HTTP status code,
+                user agent) is processed to ensure reliable and secure operation (Art. 6 (1) lit. f GDPR).
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>3. Self-Hosted Web Fonts (Zero External CDN Requests)</h2>
+              <p>
+                All web fonts used on this website (<em>Big Shoulders Display</em>, <em>Instrument Sans</em>, and
+                <em>Instrument Serif</em>) are hosted locally as <code>.woff2</code> files on this server. No connection
+                is made to Google Fonts or any external font CDN.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>4. Zero Cookies, Zero Tracking — Local Preferences Only</h2>
+              <p>
+                This site sets <strong>no marketing, analytics, or tracking cookies</strong> and loads no third-party
+                analytics scripts. To preserve your chosen display preferences, strictly functional browser storage is
+                used pursuant to § 25 (2) No. 2 TDDDG:
+              </p>
+              <ul class="legal-list">
+                <li><code>localStorage</code> (<code>mh_theme</code>, <code>mh_lang</code>): remembers your Day/Night mode and DE/EN language preference locally in your browser.</li>
+                <li><code>sessionStorage</code> (<code>mh_intro_seen</code>): prevents the opening logo animation from replaying during the same browser session.</li>
+              </ul>
+            </section>
+
+            <section class="legal-sec">
+              <h2>5. Contact by Email</h2>
+              <p>
+                If you contact me via email, the information you provide is processed solely to handle your inquiry
+                (Art. 6 (1) lit. b or lit. f GDPR) and is deleted once it is no longer needed and no statutory retention
+                obligations apply.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>6. External Links (GitHub &amp; LinkedIn)</h2>
+              <p>
+                References to GitHub and LinkedIn are standard hyperlinks, not embedded social plugins. Personal data is
+                only transmitted to those platforms if you actively click a link.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>7. Your Rights Under the GDPR</h2>
+              <p>
+                You have the right to request access (Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17),
+                restriction of processing (Art. 18), data portability (Art. 20), and to object to processing (Art. 21).
+                You also have the right to lodge a complaint with a supervisory authority — in Baden-Württemberg, the
+                State Commissioner for Data Protection and Freedom of Information (LfDI Baden-Württemberg).
+              </p>
+            </section>
+            {{- else -}}
+            <section class="legal-sec">
+              <h2>1. Verantwortlicher (Art. 4 Nr. 7 DSGVO)</h2>
+              <div class="legal-protected-card">
+                <p>
+                  <strong data-mh-b64="{{ $legal.name | base64Encode }}"></strong> ·
+                  <span data-mh-b64="{{ $legal.street | base64Encode }}"></span>,
+                  <span data-mh-b64="{{ $legal.postal_city | base64Encode }}"></span>,
+                  <span data-mh-b64="{{ $country | base64Encode }}"></span><br />
+                  E-Mail: <a class="text-link" data-mh-mail-u="{{ $legal.email_user | base64Encode }}" data-mh-mail-d="{{ $legal.email_domain | base64Encode }}" href="#">…</a>
+                </p>
+                <noscript>
+                  <p>Kontakt: {{ $legal.email_user }} [at] {{ $legal.email_domain }}</p>
+                </noscript>
+              </div>
+            </section>
+
+            <section class="legal-sec">
+              <h2>2. Hosting, DNS &amp; Server-Logfiles</h2>
+              <p>
+                Diese rein statische Webseite wird selbst auf einer eigenen Proxmox-/Docker-Infrastruktur über Nginx
+                betrieben und über Cloudflare (DNS, TLS-Verschlüsselung sowie DDoS- und Bot-Schutz) ausgeliefert.
+                Beim Aufruf der Seiten werden technisch notwendige Zugriffsdaten (IP-Adresse, Zeitstempel, aufgerufene
+                URL, HTTP-Statuscode, Browser-Typ) zur Sicherstellung eines stabilen und sicheren Betriebs verarbeitet
+                (Art. 6 Abs. 1 lit. f DSGVO).
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>3. Lokal gehostete Schriftarten (kein Google Fonts CDN)</h2>
+              <p>
+                Alle verwendeten Schriftarten (<em>Big Shoulders Display</em>, <em>Instrument Sans</em> und
+                <em>Instrument Serif</em>) liegen als lokale <code>.woff2</code>-Dateien direkt auf diesem Server.
+                Es findet keinerlei Datenübertragung an Google Fonts oder externe CDN-Server statt.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>4. Keine Cookies, kein Tracking — nur lokale Darstellungseinstellungen</h2>
+              <p>
+                Diese Webseite verwendet <strong>keine Cookies</strong>, keine Analyse- oder Werbe-Tracker und keine
+                eingebetteten Drittanbieter-Skripte. Ausschließlich für technisch gewünschte Komfortfunktionen nutzt
+                dein Browser lokalen Speicher gemäß § 25 Abs. 2 Nr. 2 TDDDG (ohne Übertragung an Server):
+              </p>
+              <ul class="legal-list">
+                <li><code>localStorage</code> (<code>mh_theme</code>, <code>mh_lang</code>): speichert lokal deine Wahl für Tag-/Nacht-Modus sowie Deutsch/Englisch.</li>
+                <li><code>sessionStorage</code> (<code>mh_intro_seen</code>): sorgt dafür, dass die kurze Start-Animation nur einmal pro Browser-Sitzung abläuft.</li>
+              </ul>
+            </section>
+
+            <section class="legal-sec">
+              <h2>5. Kontaktaufnahme per E-Mail</h2>
+              <p>
+                Wenn du per E-Mail Kontakt aufnimmst, werden deine Angaben ausschließlich zur Bearbeitung deiner
+                Anfrage verarbeitet (Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO) und gelöscht, sobald sie für diesen Zweck
+                nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>6. Externe Links (GitHub &amp; LinkedIn)</h2>
+              <p>
+                Verweise auf GitHub und LinkedIn sind einfache Text-Links und keine eingebetteten Social-Media-Plugins.
+                Erst beim aktiven Anklicken eines Links werden Daten an den jeweiligen Zielanbieter übertragen.
+              </p>
+            </section>
+
+            <section class="legal-sec">
+              <h2>7. Deine Rechte nach der DSGVO</h2>
+              <p>
+                Du hast jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17),
+                Einschränkung der Verarbeitung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch (Art. 21).
+                Zudem besteht ein Beschwerderecht bei der zuständigen Datenschutz-Aufsichtsbehörde — für die Region
+                Stuttgart ist dies der Landesbeauftragte für den Datenschutz und die Informationsfreiheit
+                Baden-Württemberg (LfDI).
+              </p>
+            </section>
+            {{- end -}}
+          {{- end -}}
+        </div>
+
+        <div class="legal-foot-links">
+          <a href="{{ .Site.Params.imprint_path }}" class="chip chip--md chip--dark"{{ if eq $kind "imprint" }} aria-current="page"{{ end }}>{{ $ui.footer_imprint }}</a>
+          <a href="{{ .Site.Params.privacy_path }}" class="chip chip--md chip--dark"{{ if eq $kind "privacy" }} aria-current="page"{{ end }}>{{ $ui.footer_privacy }}</a>
+          <a href="{{ .Site.Home.RelPermalink }}" class="chip chip--md chip--outline">{{ $ui.legal_back }}</a>
+        </div>
+      </article>
+    </main>
+
+    {{- partial "footer.html" . -}}
+  </div>
+  <script src="/js/main.js?v=3" defer></script>
+</body>
+</html>

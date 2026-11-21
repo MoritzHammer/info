@@ -1,10 +1,11 @@
-      {{- $hero := .Site.Data.profile.hero -}}
+      {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
+      {{- $hero := $p.hero -}}
       <section class="hero">
         <h1 class="headline">
           <span>{{ $hero.line1 }}</span>
           <span>{{ $hero.line2 }}</span>
           <span class="last">
-            <em id="rotating-phrase">{{ $hero.phrase_initial }}</em>
+            <em id="rotating-phrase" data-phrases='{{ $hero.phrases | jsonify }}'>{{ $hero.phrase_initial }}</em>
           </span>
 
           <span class="sky" aria-hidden="true">
@@ -48,9 +49,9 @@
           <div class="intro-col">
             <p>{{ $hero.intro }}</p>
             <div class="actions">
-              <a href="#lebenslauf" class="pill pill--ink">Zum Lebenslauf</a>
+              <a href="#lebenslauf" class="pill pill--ink">{{ $hero.cta_primary }}</a>
               <a class="text-link" href="#werdegang">
-                Projekte &amp; Stationen <span aria-hidden="true">→</span>
+                {{ $hero.cta_secondary }} <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
