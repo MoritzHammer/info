@@ -71,13 +71,13 @@ hero:
   phrase_initial: "for C# & AL."
   phrases:
     - text: "for C# & AL."
-      color: "var(--magenta)"
+      color: "var(--red)"
     - text: "in the .NET Ecosystem."
-      color: "var(--cyan)"
+      color: "var(--blue)"
     - text: "for Business Central."
       color: "var(--yellow-deep)"
     - text: "from the Stuttgart Region."
-      color: "var(--violet)"
+      color: "var(--red)"
   caption: "Stuttgart Region · Application Development with C# / .NET & AL"
   status: "Since July 2026 · Application Developer at Axians Infoma"
   meta:
@@ -96,7 +96,7 @@ hero:
 highlights:
   - idx: "01"
     period: "Since 07/2026"
-    color: "cyan"
+    color: "red"
     title: "Axians Infoma"
     desc: "Application Developer for enterprise & municipal software in <strong>C# / .NET</strong> and <strong>AL</strong>."
   - idx: "02"
@@ -106,12 +106,12 @@ highlights:
     desc: "State-Certified IT Technician at ITS Stuttgart including <strong>Instructor Aptitude (AEVO)</strong>."
   - idx: "03"
     period: "2021 – 08/2025"
-    color: "magenta"
+    color: "blue"
     title: "Balluff GmbH"
     desc: "<strong>Application Programmer</strong> (02/2024 – 08/2025, Angular & IO-Link) following IHK software development apprenticeship."
   - idx: "04"
     period: "Self-Hosted"
-    color: "violet"
+    color: "ink"
     title: "Proxmox & Docker"
     desc: "Personal homelab running <strong>Docker</strong>, <strong>Portainer</strong>, Nginx Reverse Proxy, Hugo & Cloudflare."
 
@@ -153,12 +153,12 @@ stack_chips:
 
 focus_cards:
   - tag: "01 · Enterprise & ERP"
-    color: "cyan"
+    color: "red"
     title: "Business Logic in C# / .NET and AL"
     org: "Axians Infoma · Since 07/2026"
     body: "Designing and maintaining long-lived ERP modules around Microsoft Dynamics 365 Business Central (AL) and .NET — with clean interfaces and clear domain logic."
   - tag: "02 · Web & Industrial IoT"
-    color: "magenta"
+    color: "blue"
     title: "Angular Interfaces & IO-Link Sensors"
     org: "Balluff GmbH · 02/2024 – 08/2025"
     body: "Concept and implementation of intuitive Angular web applications alongside low-level industrial projects for configuring and controlling RFID and SmartLight sensors."
@@ -168,7 +168,7 @@ focus_cards:
     org: "ITS Stuttgart · 09/2025 – 06/2026"
     body: "Deepened expertise in software architecture, network engineering, and applied project work at ITS Stuttgart, including the IHK Instructor Qualification (AEVO)."
   - tag: "04 · Foundation & Craft"
-    color: "violet"
+    color: "ink"
     title: "IHK Software Developer"
     org: "Balluff GmbH · 2021 – 2024"
     body: "Three-year German dual apprenticeship in application development focused on C# / .NET, Angular, relational databases, and automated testing."
@@ -193,11 +193,11 @@ cv:
       filled: 6
     - name: "English"
       level: "Fluent (B2)"
-      color: "on-cyan"
+      color: "on-blue"
       filled: 4
     - name: "C# / .NET & AL"
       level: "Daily Core Focus"
-      color: "on-magenta"
+      color: "on-red"
       filled: 5
     - name: "Angular & TypeScript"
       level: "Production-Proven"
@@ -205,7 +205,7 @@ cv:
       filled: 5
     - name: "Python & Docker"
       level: "Automation & Ops"
-      color: "on-cyan"
+      color: "on-blue"
       filled: 4
   qualifications:
     - "<strong>State-Certified IT Technician</strong> (Staatl. gepr. Techniker)"
@@ -216,7 +216,7 @@ cv:
       date: "2026.07 – present"
       org: "Axians Infoma"
       badge: "C# / .NET & AL"
-      color: "cyan"
+      color: "red"
       points:
         - "Development and evolution of enterprise and municipal software in <strong>C# (.NET)</strong> and <strong>AL (Microsoft Dynamics 365 Business Central)</strong>."
         - "Implementation of maintainable software architectures, APIs, and commercial business workflows."
@@ -243,7 +243,7 @@ cv:
       date: "2021 – 2024"
       org: "Balluff GmbH, Neuhausen"
       badge: "Grade 1.7 (89 pts) · With Distinction"
-      color: "magenta"
+      color: "blue"
       points:
         - "Contributed to production software projects in <strong>C# / .NET</strong> and Angular."
         - "Designed modular software architectures, interfaces, and automated test suites."

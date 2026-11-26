@@ -17,13 +17,20 @@
       {{- partial "homelab.html" . -}}
 
       <section class="cta-section">
-        <h2>{{ $p.ui.cta_prefix }} <em>{{ $p.ui.cta_em }}</em>{{ if $p.ui.cta_suffix }} {{ $p.ui.cta_suffix }}{{ end }}</h2>
-        <a href="mailto:{{ .Site.Params.email }}" class="pill pill--ink">{{ $p.ui.cta_btn }}</a>
+        <div class="cta-grid">
+          <div class="cta-copy">
+            <span class="spec-index">04.B // {{ $p.ui.nav_contact }}</span>
+            <h2>{{ $p.ui.cta_prefix }} <em>{{ $p.ui.cta_em }}</em>{{ if $p.ui.cta_suffix }} {{ $p.ui.cta_suffix }}{{ end }}</h2>
+          </div>
+          <div class="cta-action">
+            <a href="mailto:{{ .Site.Params.email }}" class="pill pill--ink">{{ $p.ui.cta_btn }}</a>
+          </div>
+        </div>
       </section>
     </main>
 
     {{- partial "footer.html" . -}}
   </div>
-  <script src="/js/main.js?v=3" defer></script>
+  <script src="/js/main.js?v=4" defer></script>
 </body>
 </html>

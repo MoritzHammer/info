@@ -4,11 +4,16 @@
           {{- range $p.highlights }}
           <article class="highlight-card highlight-card--{{ .color }}">
             <div class="highlight-top">
-              <span class="highlight-idx">{{ .idx }}</span>
+              <span class="highlight-idx-wrap">
+                <span class="highlight-geom geom--{{ .color }}" aria-hidden="true"></span>
+                <span class="highlight-idx">{{ .idx }}</span>
+              </span>
               <span class="highlight-period">{{ .period }}</span>
             </div>
-            <h2 class="highlight-title">{{ .title }}</h2>
-            <p class="highlight-desc">{{ .desc | safeHTML }}</p>
+            <div class="highlight-body">
+              <h2 class="highlight-title">{{ .title }}</h2>
+              <p class="highlight-desc">{{ .desc | safeHTML }}</p>
+            </div>
           </article>
           {{- end }}
         </div>

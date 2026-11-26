@@ -2,19 +2,25 @@
       {{- $ui := $p.ui -}}
       <section class="journal panel" id="architektur">
         <div class="journal-head">
-          <h2 class="panel-title">{{ $ui.homelab_heading }}</h2>
-          <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">{{ $ui.homelab_cta }}</a>
+          <div class="journal-head-left">
+            <p class="eyebrow">04 // {{ $ui.nav_homelab }}</p>
+            <h2 class="panel-title">{{ $ui.homelab_heading }}</h2>
+          </div>
+          <div class="journal-head-cta">
+            <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">{{ $ui.homelab_cta }}</a>
+          </div>
         </div>
 
         <div class="posts">
-          {{- range $p.homelab }}
+          {{- range $idx, $item := $p.homelab }}
           <article class="post-card">
             <div class="meta">
-              <span class="chip chip--sm chip--outline">{{ .tag }}</span>
-              <span>{{ .meta }}</span>
+              <span class="post-idx">04.{{ add $idx 1 }}</span>
+              <span class="chip chip--sm chip--outline">{{ $item.tag }}</span>
+              <span class="post-meta-org">{{ $item.meta }}</span>
             </div>
-            <h3 class="title">{{ .title }}</h3>
-            <p class="dek">{{ .dek }}</p>
+            <h3 class="title">{{ $item.title }}</h3>
+            <p class="dek">{{ $item.dek }}</p>
           </article>
           {{- end }}
         </div>

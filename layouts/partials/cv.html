@@ -4,17 +4,20 @@
       <section class="cv-panel panel" id="lebenslauf">
         <div class="cv-panel-head">
           <div class="cv-panel-title-wrap">
-            <p class="eyebrow">{{ $ui.cv_eyebrow }}</p>
+            <p class="eyebrow">03 // {{ $ui.cv_eyebrow }}</p>
             <h2 class="panel-title">{{ $ui.cv_heading }}</h2>
           </div>
-          <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--ink" id="cv-section-download-btn">{{ $ui.cv_download }}</a>
+          <div class="cv-head-action">
+            <a href="{{ .Site.Params.cv_url }}" download="Moritz_Hammer_Lebenslauf.pdf" class="pill pill--ink" id="cv-section-download-btn">{{ $ui.cv_download }}</a>
+          </div>
         </div>
 
         <div class="cv-grid">
+          <!-- LEFT 4 COLUMNS: SWISS SPECIFICATION DOSSIER -->
           <aside class="cv-sidebar">
             <div class="cv-profile-card">
               <div class="cv-avatar">
-                <img src="/img/portrait.jpg" width="74" height="74" loading="lazy" alt="Moritz Hammer" />
+                <img src="/img/portrait.jpg" width="76" height="76" loading="lazy" alt="Moritz Hammer" />
               </div>
               <div class="cv-profile-meta">
                 <h3>Moritz Hammer</h3>
@@ -23,7 +26,7 @@
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>{{ $ui.cv_sec_contact }}</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--red"></span>{{ $ui.cv_sec_contact }}</h3>
               <ul class="cv-data-list">
                 <li>
                   <span class="cv-data-label">{{ $ui.cv_lbl_email }}</span>
@@ -41,25 +44,7 @@
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>{{ $ui.cv_sec_workstyle }}</h3>
-              <ul class="cv-bullet-list">
-                {{- range $cv.work_style }}
-                <li>{{ . }}</li>
-                {{- end }}
-              </ul>
-            </div>
-
-            <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--yellow"></span>{{ $ui.cv_sec_tech }}</h3>
-              <ul class="cv-bullet-list cv-bullet-list--cyan">
-                {{- range $cv.tech_points }}
-                <li>{{ . | safeHTML }}</li>
-                {{- end }}
-              </ul>
-            </div>
-
-            <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>{{ $ui.cv_sec_skills }}</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--blue"></span>{{ $ui.cv_sec_skills }}</h3>
               <div class="cv-skill-bars">
                 {{- range $cv.skills }}
                 {{- $filled := .filled -}}
@@ -80,7 +65,25 @@
             </div>
 
             <div class="cv-side-block">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>{{ $ui.cv_sec_quals }}</h3>
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--yellow"></span>{{ $ui.cv_sec_tech }}</h3>
+              <ul class="cv-bullet-list cv-bullet-list--blue">
+                {{- range $cv.tech_points }}
+                <li>{{ . | safeHTML }}</li>
+                {{- end }}
+              </ul>
+            </div>
+
+            <div class="cv-side-block">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--red"></span>{{ $ui.cv_sec_workstyle }}</h3>
+              <ul class="cv-bullet-list">
+                {{- range $cv.work_style }}
+                <li>{{ . }}</li>
+                {{- end }}
+              </ul>
+            </div>
+
+            <div class="cv-side-block">
+              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--blue"></span>{{ $ui.cv_sec_quals }}</h3>
               <ul class="cv-bullet-list cv-bullet-list--yellow">
                 {{- range $cv.qualifications }}
                 <li>{{ . | safeHTML }}</li>
@@ -89,56 +92,67 @@
             </div>
           </aside>
 
+          <!-- RIGHT 8 COLUMNS: TABULAR SWISS CURRICULUM VITAE (HORIZONTAL RULES, ZERO BOX-IN-BOX) -->
           <div class="cv-main-col">
             <div class="cv-timeline-group">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--cyan"></span>{{ $ui.cv_sec_exp }}</h3>
+              <div class="cv-group-bar">
+                <span class="spec-index">03.1</span>
+                <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--red"></span>{{ $ui.cv_sec_exp }}</h3>
+              </div>
               <div class="cv-timeline-list">
                 {{- range $cv.experience }}
                 <article class="cv-entry{{ if .color }} cv-entry--{{ .color }}{{ end }}">
-                  <div class="cv-entry-head">
-                    <h4 class="cv-entry-role">{{ .role }}</h4>
+                  <div class="cv-entry-aside">
                     <span class="cv-entry-date">{{ .date }}</span>
-                  </div>
-                  <div class="cv-entry-sub">
                     <span class="cv-entry-org">{{ .org }}</span>
                     {{- if .badge }}
                     <span class="cv-badge cv-badge--{{ .color }}">{{ .badge }}</span>
                     {{- end }}
                   </div>
-                  {{- if .points }}
-                  <ul class="cv-entry-points">
-                    {{- range .points }}
-                    <li>{{ . | safeHTML }}</li>
+                  <div class="cv-entry-body">
+                    <div class="cv-entry-head">
+                      <h4 class="cv-entry-role">{{ .role }}</h4>
+                    </div>
+                    {{- if .points }}
+                    <ul class="cv-entry-points">
+                      {{- range .points }}
+                      <li>{{ . | safeHTML }}</li>
+                      {{- end }}
+                    </ul>
                     {{- end }}
-                  </ul>
-                  {{- end }}
+                  </div>
                 </article>
                 {{- end }}
               </div>
             </div>
 
             <div class="cv-timeline-group">
-              <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--magenta"></span>{{ $ui.cv_sec_edu }}</h3>
+              <div class="cv-group-bar">
+                <span class="spec-index">03.2</span>
+                <h3 class="cv-sec-heading"><span class="cv-sec-dot dot--blue"></span>{{ $ui.cv_sec_edu }}</h3>
+              </div>
               <div class="cv-timeline-list">
                 {{- range $cv.education }}
                 <article class="cv-entry{{ if .color }} cv-entry--{{ .color }}{{ end }}">
-                  <div class="cv-entry-head">
-                    <h4 class="cv-entry-role">{{ .role }}</h4>
+                  <div class="cv-entry-aside">
                     <span class="cv-entry-date">{{ .date }}</span>
-                  </div>
-                  <div class="cv-entry-sub">
                     <span class="cv-entry-org">{{ .org }}</span>
                     {{- if .badge }}
                     <span class="cv-badge cv-badge--{{ .color }}">{{ .badge }}</span>
                     {{- end }}
                   </div>
-                  {{- if .points }}
-                  <ul class="cv-entry-points">
-                    {{- range .points }}
-                    <li>{{ . | safeHTML }}</li>
+                  <div class="cv-entry-body">
+                    <div class="cv-entry-head">
+                      <h4 class="cv-entry-role">{{ .role }}</h4>
+                    </div>
+                    {{- if .points }}
+                    <ul class="cv-entry-points">
+                      {{- range .points }}
+                      <li>{{ . | safeHTML }}</li>
+                      {{- end }}
+                    </ul>
                     {{- end }}
-                  </ul>
-                  {{- end }}
+                  </div>
                 </article>
                 {{- end }}
               </div>

@@ -14,19 +14,20 @@
         <a class="logo" href="{{ if .IsHome }}#top{{ else }}{{ $home }}{{ end }}" aria-label="{{ $ui.home_aria }}">
           <span class="mark" aria-hidden="true" data-spin>
             <svg width="140" height="136" viewBox="0 0 140 136" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle class="c-yellow" cx="70" cy="44" r="42" fill="#F4B41A"/>
-              <circle class="c-cyan" cx="45" cy="87" r="42" fill="#08B4C4"/>
-              <circle class="c-magenta" cx="95" cy="87" r="42" fill="#E2366E"/>
+              <circle class="c-yellow" cx="70" cy="44" r="42" fill="#F2B705"/>
+              <circle class="c-cyan c-blue" cx="45" cy="87" r="42" fill="#1858C8"/>
+              <circle class="c-magenta c-red" cx="95" cy="87" r="42" fill="#D92B2B"/>
             </svg>
           </span>
           <span class="wordmark">MORITZ HAMMER</span>
+          <span class="logo-code" aria-hidden="true">STR // DE</span>
         </a>
 
         <nav class="links" aria-label="{{ $ui.nav_aria }}">
-          <a href="{{ $anchorBase }}#werdegang">{{ $ui.nav_work }}</a>
-          <a href="{{ $anchorBase }}#schwerpunkte">{{ $ui.nav_focus }}</a>
-          <a href="{{ $anchorBase }}#lebenslauf">{{ $ui.nav_cv }}</a>
-          <a href="{{ $anchorBase }}#architektur">{{ $ui.nav_homelab }}</a>
+          <a href="{{ $anchorBase }}#werdegang"><span class="nav-num">01</span>{{ $ui.nav_work }}</a>
+          <a href="{{ $anchorBase }}#schwerpunkte"><span class="nav-num">02</span>{{ $ui.nav_focus }}</a>
+          <a href="{{ $anchorBase }}#lebenslauf"><span class="nav-num">03</span>{{ $ui.nav_cv }}</a>
+          <a href="{{ $anchorBase }}#architektur"><span class="nav-num">04</span>{{ $ui.nav_homelab }}</a>
           <a class="cta" href="{{ $anchorBase }}#kontakt">
             {{ $ui.nav_contact }} <span class="arrow" aria-hidden="true">↗</span>
           </a>
@@ -48,11 +49,11 @@
       </header>
 
       <div class="mobile-menu" id="mobile-menu">
-        <a href="{{ $anchorBase }}#werdegang">{{ $ui.mob_work }}</a>
-        <a href="{{ $anchorBase }}#schwerpunkte">{{ $ui.mob_focus }}</a>
-        <a href="{{ $anchorBase }}#lebenslauf">{{ $ui.mob_cv }}</a>
-        <a href="{{ $anchorBase }}#architektur">{{ $ui.mob_homelab }}</a>
-        <a href="{{ $anchorBase }}#kontakt">{{ $ui.mob_contact }}</a>
+        <a href="{{ $anchorBase }}#werdegang"><span class="nav-num">01</span>{{ $ui.mob_work }}</a>
+        <a href="{{ $anchorBase }}#schwerpunkte"><span class="nav-num">02</span>{{ $ui.mob_focus }}</a>
+        <a href="{{ $anchorBase }}#lebenslauf"><span class="nav-num">03</span>{{ $ui.mob_cv }}</a>
+        <a href="{{ $anchorBase }}#architektur"><span class="nav-num">04</span>{{ $ui.mob_homelab }}</a>
+        <a href="{{ $anchorBase }}#kontakt"><span class="nav-num">05</span>{{ $ui.mob_contact }}</a>
         <div class="mobile-menu-footer">
           <div class="mobile-menu-row">
             <span>{{ $ui.mob_lang }}</span>

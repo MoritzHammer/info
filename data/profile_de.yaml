@@ -71,13 +71,13 @@ hero:
   phrase_initial: "für C# & AL."
   phrases:
     - text: "für C# & AL."
-      color: "var(--magenta)"
+      color: "var(--red)"
     - text: "im .NET-Ökosystem."
-      color: "var(--cyan)"
+      color: "var(--blue)"
     - text: "für Business Central."
       color: "var(--yellow-deep)"
     - text: "aus der Region Stuttgart."
-      color: "var(--violet)"
+      color: "var(--red)"
   caption: "Region Stuttgart · Anwendungsentwicklung mit C# / .NET & AL"
   status: "Seit Juli 2026 · Anwendungsentwickler bei Axians Infoma"
   meta:
@@ -96,7 +96,7 @@ hero:
 highlights:
   - idx: "01"
     period: "Seit 07/2026"
-    color: "cyan"
+    color: "red"
     title: "Axians Infoma"
     desc: "Anwendungsentwickler für kaufmännische & kommunale Software in <strong>C# / .NET</strong> und <strong>AL</strong>."
   - idx: "02"
@@ -106,12 +106,12 @@ highlights:
     desc: "Staatlich geprüfter Techniker für Informationstechnik an der ITS Stuttgart inkl. <strong>Ausbildereignung (AEVO)</strong>."
   - idx: "03"
     period: "2021 – 08/2025"
-    color: "magenta"
+    color: "blue"
     title: "Balluff GmbH"
     desc: "<strong>Anwendungsprogrammierer</strong> (02/2024 – 08/2025, Angular & IO-Link) nach der Ausbildung zum Fachinformatiker (IHK)."
   - idx: "04"
     period: "Self-Hosted"
-    color: "violet"
+    color: "ink"
     title: "Proxmox & Docker"
     desc: "Eigenes Homelab mit <strong>Docker</strong>, <strong>Portainer</strong>, Nginx Reverse Proxy, Hugo & Cloudflare."
 
@@ -153,12 +153,12 @@ stack_chips:
 
 focus_cards:
   - tag: "01 · Enterprise & ERP"
-    color: "cyan"
+    color: "red"
     title: "Geschäftslogik in C# / .NET und AL"
     org: "Axians Infoma · Seit 07/2026"
     body: "Entwicklung und Pflege langlebiger Fachverfahren im Umfeld von Microsoft Dynamics 365 Business Central (AL) und .NET — mit klaren Schnittstellen und nachvollziehbarer Domänenlogik."
   - tag: "02 · Web & Industrial IoT"
-    color: "magenta"
+    color: "blue"
     title: "Angular-Oberflächen & IO-Link-Sensorik"
     org: "Balluff GmbH · 02/2024 – 08/2025"
     body: "Konzeption und Umsetzung bedienfreundlicher Webanwendungen mit Angular sowie hardwarenaher Projekte zur Konfiguration und Ansteuerung von RFID- und SmartLight-Industriesensorik."
@@ -168,7 +168,7 @@ focus_cards:
     org: "ITS Stuttgart · 09/2025 – 06/2026"
     body: "Vertiefung in Softwarearchitektur, Netzwerktechnik und Projektarbeit an der ITS Stuttgart inklusive Ausbildereignungsprüfung (AEVO — IHK)."
   - tag: "04 · Fundament & Praxis"
-    color: "violet"
+    color: "ink"
     title: "Fachinformatiker Anwendungsentwicklung"
     org: "Balluff GmbH · 2021 – 2024"
     body: "Dreijährige IHK-Ausbildung mit Schwerpunkt C# / .NET, Angular, relationalen Datenbanken und sauberer Testabdeckung."
@@ -193,11 +193,11 @@ cv:
       filled: 6
     - name: "Englisch"
       level: "Fließend (B2)"
-      color: "on-cyan"
+      color: "on-blue"
       filled: 4
     - name: "C# / .NET & AL"
       level: "Täglicher Schwerpunkt"
-      color: "on-magenta"
+      color: "on-red"
       filled: 5
     - name: "Angular & TypeScript"
       level: "Praxiserprobt"
@@ -205,7 +205,7 @@ cv:
       filled: 5
     - name: "Python & Docker"
       level: "Automatisierung & Ops"
-      color: "on-cyan"
+      color: "on-blue"
       filled: 4
   qualifications:
     - "<strong>Staatlich geprüfter Techniker</strong> für Informationstechnik"
@@ -216,7 +216,7 @@ cv:
       date: "2026.07 – heute"
       org: "Axians Infoma"
       badge: "C# / .NET & AL"
-      color: "cyan"
+      color: "red"
       points:
         - "Entwicklung und Weiterentwicklung von Unternehmens- und Kommunalsoftware in <strong>C# (.NET)</strong> und <strong>AL (Microsoft Dynamics 365 Business Central)</strong>."
         - "Umsetzung wartbarer Softwarearchitekturen, Schnittstellen sowie kaufmännischer Geschäftsprozesse."
@@ -243,7 +243,7 @@ cv:
       date: "2021 – 2024"
       org: "Balluff GmbH, Neuhausen"
       badge: "Note 1,7 (89 Punkte) · Mit Belobigung"
-      color: "magenta"
+      color: "blue"
       points:
         - "Mitarbeit an Softwareprojekten in <strong>C# / .NET</strong> und Angular."
         - "Entwurf modularer Softwarearchitekturen, Schnittstellen und automatisierter Tests."

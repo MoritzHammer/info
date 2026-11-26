@@ -5,117 +5,152 @@
       {{- $t2 := index $p.work_tiles 2 -}}
       {{- $t3 := index $p.work_tiles 3 -}}
       <section class="work panel" id="werdegang">
-        <h2 class="panel-title">{{ $ui.work_heading }}</h2>
-
-        <div class="grid">
-          <!-- Tile 1: Axians Infoma -->
-          <article class="tile">
-            <div class="img">
-              <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
-                <rect class="svg-bg-1" width="620" height="420" fill="#efeae0"/>
-                <circle cx="468" cy="162" r="72" fill="#F4B41A" opacity="0.88"/>
-                <circle cx="422" cy="234" r="72" fill="#08B4C4" opacity="0.85"/>
-                <circle cx="508" cy="234" r="72" fill="#E2366E" opacity="0.85"/>
-                <line x1="48" y1="68" x2="572" y2="68" stroke="#08B4C4" stroke-opacity="0.35"/>
-                <line x1="48" y1="352" x2="572" y2="352" stroke="#08B4C4" stroke-opacity="0.35"/>
-                <text x="48" y="50" fill="#08B4C4" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t0.svg_eyebrow }}</text>
-                <text class="svg-title" x="48" y="232" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="76" letter-spacing="1">C# &amp; AL</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t0.svg_sub }}</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="left">
-                <span class="chip chip--sm chip--dark">{{ $t0.chip }}</span>
-                <h3>{{ $t0.title }}</h3>
-              </div>
-              <p>{{ $t0.desc | safeHTML }}</p>
-            </div>
-          </article>
-
-          <!-- Tile 2: Techniker für Informationstechnik -->
-          <article class="tile">
-            <div class="img">
-              <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
-                <rect class="svg-bg-2" width="620" height="420" fill="#f3ece0"/>
-                <circle cx="484" cy="204" r="88" fill="#E2366E" opacity="0.28"/>
-                <circle cx="466" cy="192" r="56" fill="#F4B41A" opacity="0.9"/>
-                <circle cx="512" cy="226" r="44" fill="#08B4C4" opacity="0.9"/>
-                <line x1="48" y1="68" x2="572" y2="68" stroke="#c28700" stroke-opacity="0.35"/>
-                <line x1="48" y1="352" x2="572" y2="352" stroke="#c28700" stroke-opacity="0.35"/>
-                <text x="48" y="50" fill="#c28700" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t1.svg_eyebrow }}</text>
-                <text class="svg-title" x="48" y="232" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="60">{{ if eq .Site.Language.Lang "en" }}IT TECHNICIAN{{ else }}TECHNIKER IT{{ end }}</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t1.svg_sub }}</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="left">
-                <span class="chip chip--sm chip--dark">{{ $t1.chip }}</span>
-                <h3>{{ $t1.title }}</h3>
-              </div>
-              <p>{{ $t1.desc | safeHTML }}</p>
-            </div>
-          </article>
-
-          <!-- Tile 3: Balluff GmbH -->
-          <article class="tile">
-            <div class="img">
-              <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
-                <rect class="svg-bg-3" width="620" height="420" fill="#e9ecf2"/>
-                <circle cx="476" cy="164" r="68" fill="#08B4C4" opacity="0.82"/>
-                <circle cx="432" cy="234" r="62" fill="#E2366E" opacity="0.85"/>
-                <circle cx="508" cy="242" r="56" fill="#F4B41A" opacity="0.85"/>
-                <line x1="48" y1="68" x2="572" y2="68" stroke="#08B4C4" stroke-opacity="0.35"/>
-                <line x1="48" y1="352" x2="572" y2="352" stroke="#08B4C4" stroke-opacity="0.35"/>
-                <text x="48" y="50" fill="#08B4C4" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t2.svg_eyebrow }}</text>
-                <text class="svg-title" x="48" y="198" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="64">ANGULAR &amp;</text>
-                <text class="svg-title" x="48" y="264" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="64">IO-LINK</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t2.svg_sub }}</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="left">
-                <span class="chip chip--sm chip--dark">{{ $t2.chip }}</span>
-                <h3>{{ $t2.title }}</h3>
-              </div>
-              <p>{{ $t2.desc | safeHTML }}</p>
-            </div>
-          </article>
-
-          <!-- Tile 4: Self-Hosted Proxmox & Portainer Homelab -->
-          <article class="tile">
-            <div class="img">
-              <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
-                <rect class="svg-bg-4" width="620" height="420" fill="#e8eeec"/>
-                <circle cx="445" cy="210" r="115" fill="none" stroke="#08B4C4" stroke-width="2" stroke-dasharray="6 6"/>
-                <circle cx="445" cy="210" r="76" fill="none" stroke="#E2366E" stroke-width="2"/>
-                <circle cx="445" cy="188" r="28" fill="#F4B41A" opacity="0.9"/>
-                <circle cx="426" cy="222" r="28" fill="#08B4C4" opacity="0.88"/>
-                <circle cx="464" cy="222" r="28" fill="#E2366E" opacity="0.88"/>
-                <line x1="48" y1="68" x2="572" y2="68" stroke="#131313" stroke-opacity="0.18"/>
-                <line x1="48" y1="352" x2="572" y2="352" stroke="#131313" stroke-opacity="0.18"/>
-                <text x="48" y="50" fill="#e2366e" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2">{{ $t3.svg_eyebrow }}</text>
-                <text class="svg-title" x="48" y="232" fill="#131313" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="74">HOMELAB</text>
-                <text class="svg-sub" x="48" y="384" fill="#57544e" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t3.svg_sub }}</text>
-              </svg>
-            </div>
-            <div class="meta">
-              <div class="left">
-                <span class="chip chip--sm chip--dark">{{ $t3.chip }}</span>
-                <h3>{{ $t3.title }}</h3>
-              </div>
-              <p>{{ $t3.desc | safeHTML }}</p>
-            </div>
-          </article>
+        <div class="section-head">
+          <div class="section-head-left">
+            <p class="eyebrow">01 // {{ $ui.nav_work }}</p>
+            <h2 class="panel-title">{{ $ui.work_heading }}</h2>
+          </div>
+          <span class="section-code" aria-hidden="true">BAUHAUS-RASTER // 4:8</span>
         </div>
 
-        <div class="team" id="expertise">
-          <h3 class="team-title">{{ $ui.team_title }}</h3>
-          <p>{{ $ui.team_body }}</p>
-          <ul class="services">
-            {{- range $p.stack_chips }}
-            <li><span class="chip chip--md chip--dark">{{ . }}</span></li>
-            {{- end }}
-          </ul>
-          <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">{{ $ui.team_cta }}</a>
+        <div class="work-layout">
+          <!-- LEFT 4 COLUMNS: ARCHITECTURAL THESIS & TECHNICAL STACK MATRIX -->
+          <aside class="team" id="expertise">
+            <span class="spec-index">01.A // STACK &amp; ARCHITEKTUR</span>
+            <h3 class="team-title">{{ $ui.team_title }}</h3>
+            <p>{{ $ui.team_body }}</p>
+            <ul class="services">
+              {{- range $idx, $chip := $p.stack_chips }}
+              <li>
+                <span class="stack-idx">{{ printf "%02d" (add $idx 1) }}</span>
+                <span class="chip chip--md chip--dark">{{ $chip }}</span>
+              </li>
+              {{- end }}
+            </ul>
+            <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener" class="pill pill--ink">{{ $ui.team_cta }}</a>
+          </aside>
+
+          <!-- RIGHT 8 COLUMNS: HORIZONTAL ARCHITECTURAL PLATES (01.1 – 01.4) -->
+          <div class="grid">
+            <!-- Plate 01.1: Axians Infoma -->
+            <article class="tile">
+              <div class="img">
+                <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="svg-bg" width="620" height="420" fill="#EAE5DC"/>
+                  <line class="svg-rule" x1="0" y1="210" x2="620" y2="210" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="450" y1="0" x2="450" y2="420" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="40" y1="68" x2="580" y2="68" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <line class="svg-rule" x1="40" y1="348" x2="580" y2="348" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <circle cx="450" cy="162" r="66" fill="#F2B705" style="mix-blend-mode:multiply"/>
+                  <circle cx="408" cy="232" r="66" fill="#1858C8" style="mix-blend-mode:multiply"/>
+                  <circle cx="492" cy="232" r="66" fill="#D92B2B" style="mix-blend-mode:multiply"/>
+                  <text x="40" y="48" fill="#D92B2B" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2.2">{{ $t0.svg_eyebrow }}</text>
+                  <text class="svg-title" x="40" y="234" fill="#111111" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="82" letter-spacing="1">C# &amp; AL</text>
+                  <text class="svg-sub" x="40" y="384" fill="#5C5953" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t0.svg_sub }}</text>
+                </svg>
+              </div>
+              <div class="meta">
+                <div class="left">
+                  <div class="tile-index-row">
+                    <span class="tile-num">01.1</span>
+                    <span class="chip chip--sm chip--dark">{{ $t0.chip }}</span>
+                  </div>
+                  <h3>{{ $t0.title }}</h3>
+                </div>
+                <p>{{ $t0.desc | safeHTML }}</p>
+              </div>
+            </article>
+
+            <!-- Plate 01.2: Techniker für Informationstechnik -->
+            <article class="tile">
+              <div class="img">
+                <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="svg-bg" width="620" height="420" fill="#EAE5DC"/>
+                  <line class="svg-rule" x1="0" y1="210" x2="620" y2="210" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="460" y1="0" x2="460" y2="420" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="40" y1="68" x2="580" y2="68" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <line class="svg-rule" x1="40" y1="348" x2="580" y2="348" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <rect x="382" y="132" width="156" height="156" fill="none" stroke="#111111" stroke-width="2" stroke-opacity="0.4"/>
+                  <circle cx="460" cy="210" r="68" fill="#F2B705"/>
+                  <circle cx="504" cy="236" r="42" fill="#1858C8"/>
+                  <rect x="394" y="144" width="36" height="36" fill="#D92B2B"/>
+                  <text x="40" y="48" fill="#B88400" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2.2">{{ $t1.svg_eyebrow }}</text>
+                  <text class="svg-title" x="40" y="232" fill="#111111" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="62">{{ if eq .Site.Language.Lang "en" }}IT TECHNICIAN{{ else }}TECHNIKER IT{{ end }}</text>
+                  <text class="svg-sub" x="40" y="384" fill="#5C5953" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t1.svg_sub }}</text>
+                </svg>
+              </div>
+              <div class="meta">
+                <div class="left">
+                  <div class="tile-index-row">
+                    <span class="tile-num">01.2</span>
+                    <span class="chip chip--sm chip--dark">{{ $t1.chip }}</span>
+                  </div>
+                  <h3>{{ $t1.title }}</h3>
+                </div>
+                <p>{{ $t1.desc | safeHTML }}</p>
+              </div>
+            </article>
+
+            <!-- Plate 01.3: Balluff GmbH -->
+            <article class="tile">
+              <div class="img">
+                <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="svg-bg" width="620" height="420" fill="#EAE5DC"/>
+                  <line class="svg-rule" x1="0" y1="210" x2="620" y2="210" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="460" y1="0" x2="460" y2="420" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="40" y1="68" x2="580" y2="68" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <line class="svg-rule" x1="40" y1="348" x2="580" y2="348" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <circle cx="468" cy="166" r="64" fill="#1858C8"/>
+                  <circle cx="424" cy="236" r="58" fill="#D92B2B"/>
+                  <circle cx="498" cy="242" r="52" fill="#F2B705"/>
+                  <text x="40" y="48" fill="#1858C8" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2.2">{{ $t2.svg_eyebrow }}</text>
+                  <text class="svg-title" x="40" y="198" fill="#111111" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="64">ANGULAR &amp;</text>
+                  <text class="svg-title" x="40" y="264" fill="#111111" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="64">IO-LINK</text>
+                  <text class="svg-sub" x="40" y="384" fill="#5C5953" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t2.svg_sub }}</text>
+                </svg>
+              </div>
+              <div class="meta">
+                <div class="left">
+                  <div class="tile-index-row">
+                    <span class="tile-num">01.3</span>
+                    <span class="chip chip--sm chip--dark">{{ $t2.chip }}</span>
+                  </div>
+                  <h3>{{ $t2.title }}</h3>
+                </div>
+                <p>{{ $t2.desc | safeHTML }}</p>
+              </div>
+            </article>
+
+            <!-- Plate 01.4: Self-Hosted Proxmox & Portainer Homelab -->
+            <article class="tile">
+              <div class="img">
+                <svg class="work-img" viewBox="0 0 620 420" xmlns="http://www.w3.org/2000/svg">
+                  <rect class="svg-bg" width="620" height="420" fill="#EAE5DC"/>
+                  <line class="svg-rule" x1="0" y1="210" x2="620" y2="210" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="450" y1="0" x2="450" y2="420" stroke="#111111" stroke-opacity="0.16" stroke-width="1"/>
+                  <line class="svg-rule" x1="40" y1="68" x2="580" y2="68" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <line class="svg-rule" x1="40" y1="348" x2="580" y2="348" stroke="#111111" stroke-opacity="0.28" stroke-width="1.5"/>
+                  <circle cx="450" cy="210" r="108" fill="none" stroke="#1858C8" stroke-width="2"/>
+                  <circle cx="450" cy="210" r="72" fill="none" stroke="#D92B2B" stroke-width="2"/>
+                  <circle cx="450" cy="186" r="30" fill="#F2B705"/>
+                  <circle cx="429" cy="222" r="30" fill="#1858C8"/>
+                  <circle cx="471" cy="222" r="30" fill="#D92B2B"/>
+                  <text x="40" y="48" fill="#D92B2B" font-family="Instrument Sans, sans-serif" font-size="12" font-weight="700" letter-spacing="2.2">{{ $t3.svg_eyebrow }}</text>
+                  <text class="svg-title" x="40" y="232" fill="#111111" font-family="Big Shoulders Display, sans-serif" font-weight="900" font-size="76">HOMELAB</text>
+                  <text class="svg-sub" x="40" y="384" fill="#5C5953" font-family="Instrument Serif, serif" font-style="italic" font-size="23">{{ $t3.svg_sub }}</text>
+                </svg>
+              </div>
+              <div class="meta">
+                <div class="left">
+                  <div class="tile-index-row">
+                    <span class="tile-num">01.4</span>
+                    <span class="chip chip--sm chip--dark">{{ $t3.chip }}</span>
+                  </div>
+                  <h3>{{ $t3.title }}</h3>
+                </div>
+                <p>{{ $t3.desc | safeHTML }}</p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>

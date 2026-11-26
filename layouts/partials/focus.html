@@ -1,23 +1,30 @@
       {{- $p := index .Site.Data (printf "profile_%s" .Site.Language.Lang) -}}
       {{- $ui := $p.ui -}}
-      <section class="love" id="schwerpunkte">
+      <section class="love panel" id="schwerpunkte">
         <div class="love-head">
           <div class="love-title">
-            <p class="eyebrow">{{ $ui.focus_eyebrow }}</p>
-            <h2>{{ $ui.focus_heading_1 }}<br />{{ $ui.focus_heading_2 }}</h2>
+            <p class="eyebrow">02 // {{ $ui.focus_eyebrow }}</p>
+            <h2>{{ $ui.focus_heading_1 }} {{ $ui.focus_heading_2 }}</h2>
           </div>
-          <a href="#kontakt" class="pill pill--ink">{{ $ui.focus_cta }}</a>
+          <div class="love-cta-cell">
+            <a href="#kontakt" class="pill pill--ink">{{ $ui.focus_cta }} →</a>
+          </div>
         </div>
 
         <div class="focus-grid">
           {{- range $p.focus_cards }}
           <article class="focus-card focus-card--{{ .color }}">
             <div class="focus-card-top">
-              <span class="focus-tag">{{ .tag }}</span>
+              <span class="focus-tag">
+                <span class="highlight-geom geom--{{ .color }}" aria-hidden="true"></span>
+                {{ .tag }}
+              </span>
               <span class="focus-org">{{ .org }}</span>
             </div>
-            <h3 class="focus-title">{{ .title }}</h3>
-            <p class="focus-body">{{ .body }}</p>
+            <div class="focus-card-body">
+              <h3 class="focus-title">{{ .title }}</h3>
+              <p class="focus-body">{{ .body }}</p>
+            </div>
           </article>
           {{- end }}
         </div>
